@@ -32,3 +32,26 @@ export const createPlant = async (req: Request, res: Response) => {
     res.status(400).json({ error: 'Erro ao criar planta' });
   }
 };
+
+
+// Controlador para atualizar uma planta
+export const updatePlant = async (req: Request, res: Response) => {
+  try {
+    const { name, subtitle, price, discountPercentage, description, imgUrl, plantTypeId } = req.body;
+
+    // Cria a nova planta no banco de dados
+    const newPlant = await Plant.create({
+      name,
+      subtitle,
+      price,
+      discountPercentage,
+      description,
+      imgUrl,
+      plantTypeId,
+    });
+
+    res.status(201).json(newPlant); // Retorna a planta recém-criada
+  } catch (error) {
+    res.status(400).json({ error: 'Erro ao criar planta' });
+  }
+};

@@ -10,4 +10,7 @@ router.get('/', getPlants);
 // Rota para criar uma nova planta (valida o corpo da requisição antes de criar)
 router.post('/', validatePlant, createPlant);
 
+// Rota para atualizar informações de uma planta
+router.post('/', validatePlant, updatePlant);
+
 export default router;
