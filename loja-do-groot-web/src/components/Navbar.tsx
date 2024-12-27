@@ -1,5 +1,6 @@
 import { UserButton } from '@clerk/clerk-react'
 import { NavLink } from 'react-router-dom'
+import '../styles/Navbar.css'
 import grootLogo from '/groot-logo.svg'
 
 const Navbar = () => {

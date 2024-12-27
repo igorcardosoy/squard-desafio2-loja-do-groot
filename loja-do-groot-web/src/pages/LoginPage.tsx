@@ -1,4 +1,5 @@
 import { SignIn } from '@clerk/clerk-react'
+import '../styles/LoginPage.css'
 
 const LoginPage = () => {
   return (

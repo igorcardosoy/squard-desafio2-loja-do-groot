@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut } from '@clerk/clerk-react'
+import { ClerkLoaded, SignedIn, SignedOut } from '@clerk/clerk-react'
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import Footer from './components/Footer'
@@ -13,27 +13,29 @@ import Register from './pages/Register'
 function App() {
   return (
     <div className='page-container'>
-      <SignedIn>
-        <header>
-          <Navbar />
-        </header>
-      </SignedIn>
-      <main>
+      <ClerkLoaded>
         <SignedIn>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/products' element={<Products />} />
-            <Route path='/product/:id' element={<Product />} />
-            <Route path='/about-us' element={<AboutUs />} />
-          </Routes>
+          <header>
+            <Navbar />
+          </header>
         </SignedIn>
-        <SignedOut>
-          <LoginPage />
-        </SignedOut>
-      </main>
-      <Footer />
+        <main>
+          <SignedIn>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/home' element={<Home />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/products' element={<Products />} />
+              <Route path='/product/:id' element={<Product />} />
+              <Route path='/about-us' element={<AboutUs />} />
+            </Routes>
+          </SignedIn>
+          <SignedOut>
+            <LoginPage />
+          </SignedOut>
+        </main>
+        <Footer />
+      </ClerkLoaded>
     </div>
   )
 }

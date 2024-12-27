@@ -1,4 +1,5 @@
 import footerBackground from '../assets/footer_background.png'
+import '../styles/Footer.css'
 import grootLogo from '/groot-logo.svg'
 
 const Footer = () => {
