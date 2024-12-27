@@ -1,9 +1,4 @@
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  UserButton,
-} from '@clerk/clerk-react'
+import { UserButton } from '@clerk/clerk-react'
 import { NavLink } from 'react-router-dom'
 import grootLogo from '/groot-logo.svg'
 
@@ -50,12 +45,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className='nav-end'>
-        <SignedOut>
-          <SignInButton />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
+        <UserButton />
       </div>
     </nav>
   )
