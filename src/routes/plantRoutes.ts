@@ -13,4 +13,24 @@ router.post('/', validatePlant, createPlant);
 // Rota para atualizar informações de uma planta
 // router.put('/:id', validatePlant, updatePlant);
 
+
+//TODOS:
+// Rota para deletar uma planta
+
+
+// Rota para buscar informações de uma planta
+
+
+// Rota para buscar os tipos de plantas
+
+
+// Rota para buscar os detalhes de um tipo de planta
+
+
+// Rota para criar um tipo de plantas
+
+
+// Rota para deletar um tipo de plantas
+
+
 export default router;
