@@ -4,10 +4,10 @@ import Plant from '../models/Plant'; // Modelo de dados das plantas
 // Controlador para obter todas as plantas
 export const getPlants = async (req: Request, res: Response) => {
   try {
-    console.log("GET all plants testing")
     const plants = await Plant.findAll();
     res.status(200).json(plants); // Retorna as plantas em formato JSON
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Erro ao buscar plantas' });
   }
 };
@@ -30,6 +30,7 @@ export const createPlant = async (req: Request, res: Response) => {
 
     res.status(201).json(newPlant); // Retorna a planta recém-criada
   } catch (error) {
+    console.error(error)
     res.status(400).json({ error: 'Erro ao criar planta' });
   }
 };
@@ -50,7 +51,8 @@ export const updatePlant = async (req: Request, res: Response) => {
     
 
     res.status(201).json(); // Retorna a planta recém-criada
-  } catch (error) {
+  } catch (error) {    console.error(error)
+    console.error(error)
     res.status(400).json({ error: 'Erro ao criar planta' });
   }
 };

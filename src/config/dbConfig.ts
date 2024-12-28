@@ -1,13 +1,13 @@
-import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize(
-  process.env.DB_NAME || 'plant_store',
-  process.env.DB_USER || 'root',
-  process.env.DB_PASSWORD || '',
-  {
-    host: process.env.DB_HOST || 'localhost',
-    dialect: 'mysql',
-  }
-);
+import { Sequelize } from 'sequelize';
+import path from 'path';
+
+const storagePath = path.join(__dirname, '..', 'database.sqlite'); 
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage: storagePath,
+  logging: true
+});
 
 export default sequelize;
