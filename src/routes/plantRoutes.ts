@@ -1,6 +1,6 @@
 import express from 'express';
-import { getPlants, createPlant } from '../controllers/plantController'; // Controladores das plantas
-import { validatePlant } from '../middlewares/validationMiddleware'; // Middleware de validação
+import { getPlants, createPlant, updatePlant } from '../controllers/plantController';
+import { validatePlant } from '../middlewares/validationMiddleware';
 
 const router = express.Router();
 
@@ -11,6 +11,6 @@ router.get('/', getPlants);
 router.post('/', validatePlant, createPlant);
 
 // Rota para atualizar informações de uma planta
-router.post('/', validatePlant, updatePlant);
+// router.put('/:id', validatePlant, updatePlant);
 
 export default router;
