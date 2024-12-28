@@ -1,5 +1,7 @@
 # squard-desafio2-loja-do-groot
 
+> localhost:3000/api/plants/
+
 ---
 
 ## Para rodar o backend
