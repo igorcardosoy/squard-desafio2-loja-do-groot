@@ -15,7 +15,7 @@ export const getPlants = async (req: Request, res: Response) => {
 // Controlador para criar uma nova planta
 export const createPlant = async (req: Request, res: Response) => {
   try {
-    const { name, subtitle, price, discountPercentage, description, imgUrl, plantTypeId } = req.body;
+    const { name, subtitle, price, discountPercentage, description, features, imgUrl} = req.body;
 
     // Cria a nova planta no banco de dados
     const newPlant = await Plant.create({
@@ -24,8 +24,9 @@ export const createPlant = async (req: Request, res: Response) => {
       price,
       discountPercentage,
       description,
+      features,
       imgUrl,
-      plantTypeId,
+      isInSale: true // deveria estar aqui?
     });
 
     res.status(201).json(newPlant); // Retorna a planta recém-criada

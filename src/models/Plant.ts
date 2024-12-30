@@ -9,6 +9,7 @@ interface PlantAttributes {
   price: number;
   discountPercentage: number | null;
   description: string;
+  features: string;
   imgUrl: string;
   isInSale: boolean;
 }
@@ -24,6 +25,7 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public price!: number;
   public discountPercentage!: number | null;
   public description!: string;
+  public features!: string;
   public imgUrl!: string;
   public isInSale!: boolean;
 }
@@ -53,6 +55,10 @@ Plant.init(
       allowNull: true,
     },
     description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    features: {
       type: DataTypes.TEXT,
       allowNull: false,
     },
