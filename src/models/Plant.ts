@@ -10,7 +10,7 @@ interface PlantAttributes {
   discountPercentage: number | null;
   description: string;
   imgUrl: string;
-  plantTypeId: number;
+  isInSale: boolean;
 }
 
 // Interface para os atributos opcionais na criação
@@ -25,7 +25,7 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public discountPercentage!: number | null;
   public description!: string;
   public imgUrl!: string;
-  public plantTypeId!: number;
+  public isInSale!: boolean;
 }
 
 // Inicialização do modelo
@@ -60,9 +60,10 @@ Plant.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    plantTypeId: {
-      type: DataTypes.INTEGER,
+    isInSale: {
+      type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: true
     },
   },
   {

@@ -31,7 +31,7 @@ export const createPlant = async (req: Request, res: Response) => {
     res.status(201).json(newPlant); // Retorna a planta recém-criada
   } catch (error) {
     console.error(error)
-    res.status(400).json({ error: 'Erro ao criar planta' });
+    res.status(500).json({ error: 'Erro ao criar planta' });
   }
 };
 
@@ -50,9 +50,9 @@ export const updatePlant = async (req: Request, res: Response) => {
 
     
 
-    res.status(201).json(); // Retorna a planta recém-criada
+    res.status(201).json(); // Retorna a planta recém-atualizada
   } catch (error) {    console.error(error)
     console.error(error)
-    res.status(400).json({ error: 'Erro ao criar planta' });
+    res.status(500).json({ error: 'Erro ao atualizar planta' });
   }
 };
