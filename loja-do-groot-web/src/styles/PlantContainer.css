@@ -1,0 +1,24 @@
+.plants-container {
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  .title {
+    width: 100vw;
+    height: fit-content;
+  }
+
+  .title h1, .title strong {
+    font-family: 'EB Garamond', sans-serif;
+    font-weight: 700;
+    font-size: 64px;
+    color: #1A3306;
+  }
+  
+  .title strong {
+    font-weight: 700;
+    color: #8A9B6E
+  }
+}
+

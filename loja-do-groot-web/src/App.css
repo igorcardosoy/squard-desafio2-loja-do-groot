@@ -6,6 +6,5 @@
 
 main {
   display: flex;
-  padding: 16px;
   flex: 1;
 }

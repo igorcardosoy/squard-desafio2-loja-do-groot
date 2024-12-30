@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom'
 import '../styles/PlantCard.css'
 
-type PlantCardProps = {
+export type Plant = {
   plantName: string
   price: number
   plantId: string
   oldPrice?: number
 }
 
-const PlantCard = ({ plantName, price, plantId, oldPrice }: PlantCardProps) => {
+const PlantCard = ({ plantName, price, plantId, oldPrice }: Plant) => {
   return (
     <div className='plant-card'>
       <img
