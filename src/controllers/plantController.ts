@@ -15,7 +15,12 @@ export const getPlants = async (req: Request, res: Response) => {
 // Controlador para criar uma nova planta
 export const createPlant = async (req: Request, res: Response) => {
   try {
-    const { name, subtitle, price, discountPercentage, description, features, imgUrl} = req.body;
+    const { name, subtitle, price, discountPercentage, description, features, imgUrl, plantTypeId } = req.body;
+
+    // Validação: plantTypeId deve ser um array de números
+    if (!Array.isArray(plantTypeId) || !plantTypeId.every((id: any) => typeof id === 'number')) {
+      return res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
+    }
 
     // Cria a nova planta no banco de dados
     const newPlant = await Plant.create({
@@ -26,8 +31,10 @@ export const createPlant = async (req: Request, res: Response) => {
       description,
       features,
       imgUrl,
-      isInSale: true // deveria estar aqui?
+      isInSale: true
     });
+
+    // await newPlant.addPlantTypes(plantTypeId); // Depende de como a associação está configurada
 
     res.status(201).json(newPlant); // Retorna a planta recém-criada
   } catch (error) {

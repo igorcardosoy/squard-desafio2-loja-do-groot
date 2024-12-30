@@ -12,8 +12,8 @@ const plantSchema = yup.object().shape({
     .min(0, 'O desconto não pode ser menor que 0%')
     .max(100, 'O desconto não pode ser maior que 100%'),
   description: yup.string().required('A descrição da planta é obrigatória'),
-  imgUrl: yup.string().url('A URL da imagem deve ser válida').required('A URL da imagem é obrigatória'),
-  plantTypeId: yup.number().required('O tipo da planta é obrigatório'),
+  features: yup.string().required('A feature da planta é obrigatória'),
+  imgUrl: yup.string().url('A URL da imagem deve ser válida').required('A URL da imagem é obrigatória')
 });
 
 // Middleware de validação
