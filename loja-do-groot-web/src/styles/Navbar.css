@@ -50,3 +50,17 @@
 .active-link{
   color: #8A9B6E !important;
 }
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 8px 10px;
+  }
+
+  .nav img {
+    width: 40px;
+  }
+
+  .nav ul {
+    gap: 8px;
+  }
+}

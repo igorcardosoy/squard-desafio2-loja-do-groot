@@ -1,14 +1,18 @@
-.plant-card{
-  width: 400px;
-  height: fit-content;
+.plant-card {
+  width: 100%;
+  max-width: 500px;
 
-    display: flex;
-    flex-flow: column;
-    background-color: #fff;
-    box-shadow:  1px 6px 4px rgba(0, 0, 0, 0.082);
+  display: flex;
+  flex-flow: column;
+  background-color: #fff;
+  box-shadow: 1px 6px 4px rgba(0, 0, 0, 0.082);
 
-    padding-bottom: 38px;
-    gap: 16px;
+  padding-bottom: 38px;
+  gap: 16px;
+}
+
+.plant-image {
+  object-fit: cover;
 }
 
 .plant-card .plant-name {
@@ -38,15 +42,47 @@
 .old-price {
   font-size: 16px;
   text-decoration: line-through;
-  color: #AFB2AA;
+  color: #afb2aa;
 }
 
 .plant-button {
-  border: #8A9B6E 1.62px solid;
+  border: #8a9b6e 1.62px solid;
   background-color: #8a9b6e1f;
-  color: #8A9B6E;
+  color: #8a9b6e;
   text-decoration: none;
   border-radius: 20px;
   padding: 6.5px 13px;
   width: fit-content;
+}
+
+@media (max-width: 768px) {
+  .plant-card {
+    max-width: 100%;
+    height: fit-content
+  }
+
+  .plant-image {
+    width: 100%;
+    height: 300px;
+  }
+
+  .plant-info {
+    padding: 16px;
+  }
+
+  .price-container {
+    gap: 8px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .old-price {
+    font-size: 12px;
+  }
+
+  .plant-button {
+    padding: 6px 10px;
+  }
 }

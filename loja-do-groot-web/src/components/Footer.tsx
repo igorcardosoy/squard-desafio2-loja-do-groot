@@ -1,11 +1,12 @@
-import footerBackground from '../assets/footer_background.png'
 import '../styles/Footer.css'
 import grootLogo from '/groot-logo.svg'
 
 const Footer = () => {
   return (
     <footer className='footer'>
-      <img id='footer-backgound' src={footerBackground} alt='' />
+      {/* <div id='footer-backgound'>
+        <img src={footerBackground} alt='' />
+      </div> */}
       <div className='content'>
         <div className='main-content'>
           <div className='flex-col'>

@@ -103,6 +103,12 @@
     aside {
       display: none;
     }
+
+    padding-top: 10px;
+
+    .hero-left {
+      padding: 0;
+    }
     
   }
 }
