@@ -6,18 +6,21 @@ const Title = ({ title }: TitleProps) => {
   const titleWithBold = title.split('**')
   let titleElement: JSX.Element
 
-  if (titleWithBold.length > 1) {
+  if (titleWithBold.length === 1) {
+    titleElement = <h2>{title}</h2>
+  } else {
     titleElement = (
       <h1>
-        {titleWithBold[0]}
-        <strong>{titleWithBold[1]}</strong>
-        {titleWithBold[2]}
+        {titleWithBold.map((text, index) => {
+          if (index % 2 === 0) {
+            return text
+          } else {
+            return <strong key={index}>{text}</strong>
+          }
+        })}
       </h1>
     )
-  } else {
-    titleElement = <h1>{title}</h1>
   }
-
   return titleElement
 }
 export default Title

@@ -16,6 +16,46 @@ const Home = () => {
       price: 20,
       oldPrice: 25,
     },
+    {
+      plantId: '3',
+      plantName: 'Plant 3',
+      price: 30,
+    },
+    {
+      plantId: '4',
+      plantName: 'Plant 4',
+      price: 40,
+    },
+    {
+      plantId: '5',
+      plantName: 'Plant 5',
+      price: 50,
+    },
+    {
+      plantId: '6',
+      plantName: 'Plant 6',
+      price: 60,
+    },
+    {
+      plantId: '7',
+      plantName: 'Plant 7',
+      price: 70,
+    },
+    {
+      plantId: '8',
+      plantName: 'Plant 8',
+      price: 80,
+    },
+    {
+      plantId: '9',
+      plantName: 'Plant 9',
+      price: 90,
+    },
+    {
+      plantId: '10',
+      plantName: 'Plant 10',
+      price: 100,
+    },
   ]
 
   return (
@@ -40,6 +80,8 @@ const Home = () => {
         plants={plants}
         title='This Weeks Most Popular **And Best Selling**'
       />
+
+      <PlantContainer plants={plants} title='**Plants In** Sale' />
     </div>
   )
 }

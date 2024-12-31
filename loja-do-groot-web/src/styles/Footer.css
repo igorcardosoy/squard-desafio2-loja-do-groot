@@ -3,6 +3,7 @@
   height: 400px;
   background-color: #354733;
   color: #fff;
+  overflow: hidden;
 }
 
 .footer #footer-backgound {
