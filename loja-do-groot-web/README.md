@@ -1,50 +1,116 @@
-# React + TypeScript + Vite
+# Loja do Groot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo à Loja do Groot! Este é um projeto de e-commerce para venda de plantas, desenvolvido com React, TypeScript e Vite.
 
-Currently, two official plugins are available:
+## Índice
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Sobre](#sobre)
+- [Tecnologias](#tecnologias)
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Estrutura do Projeto](#estrutura-do-projeto)
 
-## Expanding the ESLint configuration
+## Sobre
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+A Loja do Groot é um e-commerce fictício que oferece uma ampla variedade de plantas. O objetivo deste projeto é demonstrar habilidades em desenvolvimento front-end utilizando tecnologias modernas.
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
+- [Clerk](https://clerk.dev/) para autenticação
+- [Swiper](https://swiperjs.com/) para carrosséis
+
+## Instalação
+
+Para rodar este projeto localmente, siga os passos abaixo:
+
+1. Clone o repositório:
+
+   ```sh
+   git clone https://github.com/seu-usuario/loja-do-groot-web
+   ```
+
+2. Navegue até o diretório do projeto:
+
+   ```sh
+   cd loja-do-groot-web
+   ```
+
+3. Instale as dependências:
+
+   ```sh
+   npm install
+   ```
+
+4. Crie um arquivo
+
+.env.local
+
+na raiz do projeto e adicione sua chave de API do Clerk:
+
+```env
+VITE_CLERK_PUBLISHABLE_KEY=pk_test_sua_chave_aqui
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+5. Inicie o servidor de desenvolvimento:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+   ```sh
+   npm run dev
+   ```
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## Uso
+
+Após iniciar o servidor de desenvolvimento, você pode acessar a aplicação em `http://localhost:3000`.
+
+## Estrutura do Projeto
+
+A estrutura do projeto é organizada da seguinte forma:
+
 ```
+loja-do-groot-web/
+├── .env.local
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── public/
+├── README.md
+├── src/
+│   ├── App.css
+│   ├── App.tsx
+│   ├── assets/
+│   ├── components/
+│   │   ├── Footer.tsx
+│   │   ├── Hero.tsx
+│   │   ├── Navbar.tsx
+│   │   ├── PlantCard.tsx
+│   │   ├── PlantContainer.tsx
+│   │   ├── Router.tsx
+│   │   ├── Title.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── pages/
+│   │   ├── AboutUs.tsx
+│   │   ├── Home.tsx
+│   │   ├── LoginPage.tsx
+│   │   ├── Product.tsx
+│   │   ├── Products.tsx
+│   │   ├── Register.tsx
+│   ├── styles/
+│   │   ├── Footer.css
+│   │   ├── Hero.css
+│   │   ├── Home.css
+│   │   ├── LoginPage.css
+│   │   ├── Navbar.css
+│   │   ├── PlantCard.css
+│   │   ├── PlantContainer.css
+│   ├── vite-env.d.ts
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── vite.config.ts
+```
+
+Este README fornece uma visão geral do projeto, instruções de instalação, uso, estrutura do projeto e informações sobre contribuição e licença.
