@@ -44,15 +44,11 @@ Para rodar este projeto localmente, siga os passos abaixo:
    npm install
    ```
 
-4. Crie um arquivo
+4. Crie um arquivo `.env.local` na raiz do projeto e adicione sua chave de API do Clerk:
 
-.env.local
-
-na raiz do projeto e adicione sua chave de API do Clerk:
-
-```env
-VITE_CLERK_PUBLISHABLE_KEY=pk_test_sua_chave_aqui
-```
+   ```env
+   VITE_CLERK_PUBLISHABLE_KEY=pk_test_sua_chave_aqui
+   ```
 
 5. Inicie o servidor de desenvolvimento:
 
