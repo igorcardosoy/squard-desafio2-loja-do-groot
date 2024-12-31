@@ -62,7 +62,7 @@ VITE_CLERK_PUBLISHABLE_KEY=pk_test_sua_chave_aqui
 
 ## Uso
 
-Após iniciar o servidor de desenvolvimento, você pode acessar a aplicação em `http://localhost:3000`.
+Após iniciar o servidor de desenvolvimento, você pode acessar a aplicação em `http://localhost:5173`.
 
 ## Estrutura do Projeto
 
