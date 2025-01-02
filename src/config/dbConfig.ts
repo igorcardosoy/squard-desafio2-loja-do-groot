@@ -2,7 +2,7 @@
 import { Sequelize } from 'sequelize';
 import path from 'path';
 
-const storagePath = path.join(__dirname, '..', 'database.sqlite'); 
+const storagePath = "./database.db"; 
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
