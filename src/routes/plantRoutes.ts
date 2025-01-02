@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', getPlants);
 
 // Rota para criar uma nova planta (valida o corpo da requisição antes de criar)
-router.post('/', validatePlant, createPlant);
+router.post('/',  validatePlant, createPlant );
 
 // Rota para atualizar informações de uma planta
 // router.put('/:id', validatePlant, updatePlant);

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, RequestHandler, Response } from 'express';
 import Plant from '../models/Plant'; // Modelo de dados das plantas
 
 // Controlador para obter todas as plantas
@@ -13,13 +13,14 @@ export const getPlants = async (req: Request, res: Response) => {
 };
 
 // Controlador para criar uma nova planta
-export const createPlant = async (req: Request, res: Response) => {
+export const createPlant = async (req: Request, res: Response): Promise<void> => {
   try {
     const { name, subtitle, price, discountPercentage, description, features, imgUrl, plantTypeId } = req.body;
 
     // Validação: plantTypeId deve ser um array de números
     if (!Array.isArray(plantTypeId) || !plantTypeId.every((id: any) => typeof id === 'number')) {
-      return res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
+       res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
+       return;
     }
 
     // Cria a nova planta no banco de dados
@@ -45,16 +46,22 @@ export const createPlant = async (req: Request, res: Response) => {
 
 
 // Controlador para atualizar uma planta
-export const updatePlant = async (req: Request, res: Response) => {
+export const updatePlant = async (req: Request, res: Response) : Promise<void>  => {
   try {
     const {id} = req.params
-    const { name, subtitle, price, discountPercentage, description, imgUrl, plantTypeId } = req.body;
+    const { name, subtitle, price, discountPercentage, description, features, imgUrl } = req.body;
+
+
+
 
     const plant = await Plant.findByPk(id);
 
     if (!plant) {
-      return res.status(404).json({ error: 'Planta não encontrada' });
+      res.status(404).json({ error: 'Planta não encontrada' });
+      return;
     }
+
+    
 
     
 
@@ -64,3 +71,18 @@ export const updatePlant = async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Erro ao atualizar planta' });
   }
 };
+
+
+
+
+
+
+
+
+export async function myFunction () : Promise<Record<string, any>>{
+  return {
+    id: 2,
+    name: "stirng",
+    luana: function a (){return "x"}
+  }
+}
