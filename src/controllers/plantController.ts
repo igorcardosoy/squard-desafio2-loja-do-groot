@@ -49,40 +49,19 @@ export const createPlant = async (req: Request, res: Response): Promise<void> =>
 export const updatePlant = async (req: Request, res: Response) : Promise<void>  => {
   try {
     const {id} = req.params
-    const { name, subtitle, price, discountPercentage, description, features, imgUrl } = req.body;
+    const { name, subtitle, price, discountPercentage, description, features, imgUrl, isInSale } = req.body;
 
+    await Plant.update(
+      { 
+        name, subtitle, price, discountPercentage, description, features, imgUrl, isInSale 
+      },
+      { where: { id } }
+    );
 
-
-
-    const plant = await Plant.findByPk(id);
-
-    if (!plant) {
-      res.status(404).json({ error: 'Planta não encontrada' });
-      return;
-    }
-
-    
-
-    
-
-    res.status(201).json(); // Retorna a planta recém-atualizada
-  } catch (error) {    console.error(error)
+    res.status(200).json();
+  } catch (error) {    
     console.error(error)
     res.status(500).json({ error: 'Erro ao atualizar planta' });
   }
 };
 
-
-
-
-
-
-
-
-export async function myFunction () : Promise<Record<string, any>>{
-  return {
-    id: 2,
-    name: "stirng",
-    luana: function a (){return "x"}
-  }
-}
