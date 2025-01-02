@@ -3,6 +3,7 @@ import sequelize from '../config/dbConfig';
 import Plant from './Plant';
 import PlantTypePlant from './PlantTypePlant';
 
+
 class PlantType extends Model {}
 
 PlantType.init(

@@ -1,6 +1,8 @@
 import express from 'express';
+
 import { getPlants, createPlant, updatePlant } from '../controllers/plantController';
 import { validatePlant } from '../middlewares/validationMiddleware';
+
 
 const router = express.Router();
 

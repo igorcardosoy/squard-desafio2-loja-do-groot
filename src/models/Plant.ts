@@ -3,6 +3,7 @@ import sequelize from '../config/dbConfig';
 import PlantType from './PlantType';
 import PlantTypePlant from './PlantTypePlant';
 
+
 interface PlantAttributes {
   id: number;
   name: string;
@@ -33,8 +34,6 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public getPlantTypes!: () => Promise<PlantType[]>;
   public setPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
   public removePlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
-
-  
 }
 
 Plant.init(
@@ -62,6 +61,7 @@ Plant.init(
     },
     description: {
       type: DataTypes.TEXT,
+
       allowNull: false,
     },
     features: {
@@ -91,6 +91,7 @@ Plant.belongsToMany(PlantType, {
   through: PlantTypePlant,
   foreignKey: 'plantId',
   as: 'plantTypes',
+
 });
 
 export default Plant;
