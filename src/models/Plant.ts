@@ -1,6 +1,8 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../config/dbConfig';
 import PlantType from './PlantType';
+import PlantTypePlant from './PlantTypePlant';
+
 
 interface PlantAttributes {
   id: number;
@@ -8,10 +10,10 @@ interface PlantAttributes {
   subtitle: string;
   price: number;
   discountPercentage: number | null;
-  description: string | null;  
-  imgUrl: string | null;       
-  plantTypeId: number;
-  features: string | null;    
+  description: string;
+  features: string;
+  imgUrl: string;
+  isInSale: boolean;
 }
 
 interface PlantCreationAttributes extends Optional<PlantAttributes, 'id'> {}
@@ -22,10 +24,16 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public subtitle!: string;
   public price!: number;
   public discountPercentage!: number | null;
-  public description!: string | null;
-  public imgUrl!: string | null;
-  public plantTypeId!: number;
-  public features!: string | null; 
+  public description!: string;
+  public features!: string;
+  public imgUrl!: string;
+  public isInSale!: boolean;
+
+  // Métodos para relações muitos-para-muitos
+  public addPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+  public getPlantTypes!: () => Promise<PlantType[]>;
+  public setPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+  public removePlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
 }
 
 Plant.init(
@@ -53,19 +61,21 @@ Plant.init(
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: true, 
-    },
-    imgUrl: {
-      type: DataTypes.STRING,
-      allowNull: true, 
-    },
-    plantTypeId: {
-      type: DataTypes.INTEGER,
+
       allowNull: false,
     },
     features: {
-      type: DataTypes.STRING,  
-      allowNull: true, 
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    isInSale: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     },
   },
   {
@@ -76,14 +86,12 @@ Plant.init(
   }
 );
 
-Plant.belongsTo(PlantType, {
-  foreignKey: 'plantTypeId',
-  as: 'plantType',
-});
+// Relacionamento muitos-para-muitos
+Plant.belongsToMany(PlantType, {
+  through: PlantTypePlant,
+  foreignKey: 'plantId',
+  as: 'plantTypes',
 
-PlantType.hasMany(Plant, {
-  foreignKey: 'plantTypeId',
-  as: 'plants',
 });
 
 export default Plant;
