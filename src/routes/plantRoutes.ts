@@ -2,7 +2,7 @@ import express from 'express';
 
 import { getPlants, createPlant, updatePlant } from '../controllers/plantController';
 import { validatePlant } from '../middlewares/validationMiddleware';
-import { createPlantType, getPlantTypes } from '../controllers/plantTypeController';
+import { createPlantType, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
 
 
 const router = express.Router();
@@ -21,6 +21,9 @@ router.get('/', getPlantTypes);
 
 // Rota para criar um tipo de plantas
 router.post('/', createPlantType );
+
+// Rota para atualizar informações de um tipo de plantas
+router.put('/:id', updatePlantType);
 
 
 //TODOS:
