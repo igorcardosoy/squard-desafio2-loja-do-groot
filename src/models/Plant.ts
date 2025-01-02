@@ -1,7 +1,8 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../config/dbConfig';
+import PlantType from './PlantType';
+import PlantTypePlant from './PlantTypePlant';
 
-// Interface para os atributos da planta
 interface PlantAttributes {
   id: number;
   name: string;
@@ -9,14 +10,13 @@ interface PlantAttributes {
   price: number;
   discountPercentage: number | null;
   description: string;
+  features: string;
   imgUrl: string;
-  plantTypeId: number;
+  isInSale: boolean;
 }
 
-// Interface para os atributos opcionais na criação
 interface PlantCreationAttributes extends Optional<PlantAttributes, 'id'> {}
 
-// Modelo Sequelize para a tabela de plantas
 class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements PlantAttributes {
   public id!: number;
   public name!: string;
@@ -24,11 +24,19 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public price!: number;
   public discountPercentage!: number | null;
   public description!: string;
+  public features!: string;
   public imgUrl!: string;
-  public plantTypeId!: number;
+  public isInSale!: boolean;
+
+  // Métodos para relações muitos-para-muitos
+  public addPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+  public getPlantTypes!: () => Promise<PlantType[]>;
+  public setPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+  public removePlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+
+  
 }
 
-// Inicialização do modelo
 Plant.init(
   {
     id: {
@@ -56,21 +64,33 @@ Plant.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    features: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
     imgUrl: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    plantTypeId: {
-      type: DataTypes.INTEGER,
+    isInSale: {
+      type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: true,
     },
   },
   {
     sequelize,
     modelName: 'Plant',
     tableName: 'plants',
-    timestamps: true, // Adiciona colunas createdAt e updatedAt
+    timestamps: true,
   }
 );
+
+// Relacionamento muitos-para-muitos
+Plant.belongsToMany(PlantType, {
+  through: PlantTypePlant,
+  foreignKey: 'plantId',
+  as: 'plantTypes',
+});
 
 export default Plant;

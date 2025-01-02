@@ -16,9 +16,6 @@ app.use(express.json());
 
 app.use('/api/plants', plantRoutes);
 
-Plant.belongsTo(PlantType, { foreignKey: 'plantTypeId', as: 'plantType' });
-PlantType.hasMany(Plant, { foreignKey: 'plantTypeId', as: 'plants' });
-
 const startServer = async () => {
   try {
     await sequelize.authenticate();
