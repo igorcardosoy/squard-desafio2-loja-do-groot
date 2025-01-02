@@ -23,6 +23,26 @@ export const createPlantType = async (req: Request, res: Response): Promise<void
     res.status(201).json(newPlantType);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: 'Erro ao criar PlantType' });
+    res.status(500).json({ error: 'Erro ao criar os tipos de planta' });
+  }
+};
+
+// Controlador para atualizar um tipo de planta
+export const updatePlantType = async (req: Request, res: Response) : Promise<void>  => {
+  try {
+    const {id} = req.params
+    const { name } = req.body;
+
+    await PlantType.update(
+      { 
+        name 
+      },
+      { where: { id } }
+    );
+
+    res.status(200).json();
+  } catch (error) {    
+    console.error(error)
+    res.status(500).json({ error: 'Erro ao atualizar os tipos de planta' });
   }
 };
