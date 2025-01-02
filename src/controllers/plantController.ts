@@ -1,5 +1,5 @@
 
-import { Request, RequestHandler, Response } from 'express';
+import { Request, Response } from 'express';
 import Plant from '../models/Plant'; // Modelo de dados das plantas
 import PlantType from '../models/PlantType';
 
