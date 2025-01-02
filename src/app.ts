@@ -4,9 +4,12 @@ import cors from 'cors';
 import plantRoutes from './routes/plantRoutes';
 
 import sequelize from './config/dbConfig'; 
-import Plant from './models/Plant';
-import PlantType from './models/PlantType';
 
+
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
