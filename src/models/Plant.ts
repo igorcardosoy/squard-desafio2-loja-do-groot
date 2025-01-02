@@ -27,6 +27,14 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public features!: string;
   public imgUrl!: string;
   public isInSale!: boolean;
+
+  // Métodos para relações muitos-para-muitos
+  public addPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+  public getPlantTypes!: () => Promise<PlantType[]>;
+  public setPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+  public removePlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+
+  
 }
 
 Plant.init(

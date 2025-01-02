@@ -1,5 +1,6 @@
 import { Request, RequestHandler, Response } from 'express';
 import Plant from '../models/Plant'; // Modelo de dados das plantas
+import PlantType from '../models/PlantType';
 
 // Controlador para obter todas as plantas
 export const getPlants = async (req: Request, res: Response) => {
@@ -35,7 +36,14 @@ export const createPlant = async (req: Request, res: Response): Promise<void> =>
       isInSale: true
     });
 
-    // await newPlant.addPlantTypes(plantTypeId); // Depende de como a associação está configurada
+    await newPlant.addPlantTypes(plantTypeId);
+
+    // Retorna a planta recém-criada com seus tipos associados
+    const createdPlant = await Plant.findByPk(newPlant.id, {
+      include: [{ model: PlantType, as: 'plantTypes' }],
+    });
+
+    res.status(201).json(createdPlant);
 
     res.status(201).json(newPlant); // Retorna a planta recém-criada
   } catch (error) {
