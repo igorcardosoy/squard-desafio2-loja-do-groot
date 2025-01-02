@@ -1,7 +1,8 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../config/dbConfig';
+import PlantType from './PlantType';
+import PlantTypePlant from './PlantTypePlant';
 
-// Interface para os atributos da planta
 interface PlantAttributes {
   id: number;
   name: string;
@@ -14,10 +15,8 @@ interface PlantAttributes {
   isInSale: boolean;
 }
 
-// Interface para os atributos opcionais na criação
 interface PlantCreationAttributes extends Optional<PlantAttributes, 'id'> {}
 
-// Modelo Sequelize para a tabela de plantas
 class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements PlantAttributes {
   public id!: number;
   public name!: string;
@@ -30,7 +29,6 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public isInSale!: boolean;
 }
 
-// Inicialização do modelo
 Plant.init(
   {
     id: {
@@ -69,15 +67,22 @@ Plant.init(
     isInSale: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: true
+      defaultValue: true,
     },
   },
   {
     sequelize,
     modelName: 'Plant',
     tableName: 'plants',
-    timestamps: true, // Adiciona colunas createdAt e updatedAt
+    timestamps: true,
   }
 );
+
+// Relacionamento muitos-para-muitos
+Plant.belongsToMany(PlantType, {
+  through: PlantTypePlant,
+  foreignKey: 'plantId',
+  as: 'plantTypes',
+});
 
 export default Plant;
