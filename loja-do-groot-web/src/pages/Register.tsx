@@ -1,6 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 import rightPlant from '../assets/right_plant.png'
 import Input from '../components/Input'
+import TextArea from '../components/TextArea'
 import '../styles/Register.css'
 
 enum PlantLabel {
@@ -8,21 +11,26 @@ enum PlantLabel {
   Outdoor = 'Outdoor',
 }
 
-interface IFormInput {
-  plantName: string
-  plantSubtitle: string
-  plantType: string
-  plantPrice: number
-  plantDiscountPercentage: number
-  plantLabel: PlantLabel
-  plantFeatures: string
-  plantDescription: string
-}
+const plantSchema = z.object({
+  plantName: z.string(),
+  plantSubtitle: z.string(),
+  plantType: z.string(),
+  plantPrice: z.number(),
+  plantDiscountPercentage: z.number(),
+  plantLabel: z.nativeEnum(PlantLabel),
+  plantFeatures: z.string(),
+  plantDescription: z.string(),
+})
+
+type IFormInput = z.infer<typeof plantSchema>
 
 const Register = () => {
-  const { register, handleSubmit } = useForm<IFormInput>()
+  const { register, handleSubmit } = useForm<IFormInput>({
+    resolver: zodResolver(plantSchema),
+  })
 
   const handlePlantRegistration = (data: IFormInput) => {
+    // Send data to the backend
     console.log(data)
   }
 
@@ -64,12 +72,8 @@ const Register = () => {
             </div>
           </div>
 
-          <Input label='Features' isTextArea {...register('plantFeatures')} />
-          <Input
-            label='Description'
-            isTextArea
-            {...register('plantDescription')}
-          />
+          <TextArea label='Features' {...register('plantFeatures')} />
+          <TextArea label='Description' {...register('plantDescription')} />
           <button type='submit'>Register</button>
         </form>
       </div>
