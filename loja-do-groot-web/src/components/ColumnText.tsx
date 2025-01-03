@@ -22,7 +22,7 @@ const ColumnText = ({
       <div className='steps-container'>
         <div className='step'>
           <Icon name='Water Icon' icon={icon} />
-          <Title title={title} />
+          <Title subtitle={title} />
           <TextContainer text={text} />
         </div>
 

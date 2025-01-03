@@ -1,17 +1,14 @@
 import '../styles/Title.css'
 
 interface TitleProps {
-  title: string
+  title?: string
+  subtitle?: string
 }
 
-const Title = ({ title }: TitleProps) => {
-  const titleWithBold = title.split('**')
-  let titleElement: JSX.Element
-
-  if (titleWithBold.length === 1) {
-    titleElement = <h2>{title}</h2>
-  } else {
-    titleElement = (
+const Title = ({ title, subtitle }: TitleProps) => {
+  if (title) {
+    const titleWithBold = title.split('**')
+    const titleElement: JSX.Element = (
       <h1>
         {titleWithBold.map((text, index) => {
           if (index % 2 === 0) {
@@ -22,8 +19,12 @@ const Title = ({ title }: TitleProps) => {
         })}
       </h1>
     )
+
+    return <div className='title'>{titleElement}</div>
   }
 
-  return <div className='title'>{titleElement}</div>
+  if (subtitle) {
+    return <h2 className='subtitle'>{subtitle}</h2>
+  }
 }
 export default Title

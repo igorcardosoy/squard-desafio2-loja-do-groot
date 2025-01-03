@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import Title from '../components/Title'
 import { Plant, PlantLabel } from '../models/Plant'
 
 const Product = () => {
@@ -27,22 +28,39 @@ const Product = () => {
   }, [id])
 
   return (
-    <div>
-      <h1>Product {product.id}</h1>
-      <h1>Name: ${product.name}</h1>
-      <h2>Subtitle: ${product.subtitle}</h2>
+    <div className='product-container'>
+      <div className='product-image'>
+        <img src='' alt='' />
+      </div>
+      <div className='product-info'>
+        <div>
+          <Title title={product.name} />
+          <h2 className='subtitle'>{product.subtitle}</h2>
+        </div>
+        <div className='labels'>
+          <span>{product.label}</span>
+          <span>{product.type}</span>
+        </div>
+        <div className='price'>
+          <span>{product.price}</span>
+          {product.discountPercentage > 0 ? (
+            <span>{product.discountPercentage}%</span>
+          ) : (
+            ''
+          )}
 
-      <h3>Price: ${product.price}</h3>
-      <h3>Discount: ${product.discountPercentage}%</h3>
-      <h3>Label: ${product.label}</h3>
+          <button>Checkout</button>
+        </div>
 
-      <h3>Features</h3>
-      <p>${product.features}</p>
-
-      <h3>Description</h3>
-      <p>${product.description}</p>
-
-      <button>Add to cart</button>
+        <div className='features'>
+          <h3>Features</h3>
+          <p>{product.features}</p>
+        </div>
+        <div className='description'>
+          <h3>Description</h3>
+          <p>{product.description}</p>
+        </div>
+      </div>
     </div>
   )
 }
