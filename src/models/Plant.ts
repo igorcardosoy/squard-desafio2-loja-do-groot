@@ -1,8 +1,6 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import sequelize from '../config/dbConfig';
-import PlantType from './PlantType';
-import PlantTypePlant from './PlantTypePlant';
-
+import PlantType from './PlantType'
 
 interface PlantAttributes {
   id: number;
@@ -85,13 +83,5 @@ Plant.init(
     timestamps: true,
   }
 );
-
-// Relacionamento muitos-para-muitos
-Plant.belongsToMany(PlantType, {
-  through: PlantTypePlant,
-  foreignKey: 'plantId',
-  as: 'plantTypes',
-
-});
 
 export default Plant;

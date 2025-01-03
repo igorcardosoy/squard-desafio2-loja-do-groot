@@ -1,13 +1,13 @@
 
 import { Request, Response } from 'express';
-import Plant from '../models/Plant'; // Modelo de dados das plantas
+import Plant from '../models/Plant'; 
 import PlantType from '../models/PlantType';
 
 // Controlador para obter todas as plantas
 export const getPlants = async (req: Request, res: Response) => {
   try {
     const plants = await Plant.findAll();
-    res.status(200).json(plants); // Retorna as plantas em formato JSON
+    res.status(200).json(plants); 
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Erro ao buscar plantas' });
@@ -19,13 +19,11 @@ export const createPlant = async (req: Request, res: Response): Promise<void> =>
   try {
     const { name, subtitle, price, discountPercentage, description, features, imgUrl, plantTypeId } = req.body;
 
-    // Validação: plantTypeId deve ser um array de números
     if (!Array.isArray(plantTypeId) || !plantTypeId.every((id: any) => typeof id === 'number')) {
        res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
        return;
     }
 
-    // Cria a nova planta no banco de dados
     const newPlant = await Plant.create({
       name,
       subtitle,
@@ -39,20 +37,18 @@ export const createPlant = async (req: Request, res: Response): Promise<void> =>
 
     await newPlant.addPlantTypes(plantTypeId);
 
-    // Retorna a planta recém-criada com seus tipos associados
     const createdPlant = await Plant.findByPk(newPlant.id, {
       include: [{ model: PlantType, as: 'plantTypes' }],
     });
 
     res.status(201).json(createdPlant);
 
-    res.status(201).json(newPlant); // Retorna a planta recém-criada
+    res.status(201).json(newPlant); 
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Erro ao criar planta' });
   }
 };
-
 
 // Controlador para atualizar uma planta
 export const updatePlant = async (req: Request, res: Response) : Promise<void>  => {
@@ -71,6 +67,47 @@ export const updatePlant = async (req: Request, res: Response) : Promise<void>  
   } catch (error) {    
     console.error(error)
     res.status(500).json({ error: 'Erro ao atualizar planta' });
+  }
+};
+
+// Controlador para deletar uma planta
+export const deletePlant = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const plant = await Plant.findByPk(id);
+    if (!plant) {
+      res.status(404).json({ error: 'Planta não encontrada' });
+    }
+
+    if(plant){
+      await plant.destroy();
+    }
+
+    res.status(204).send();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao deletar planta' });
+  }
+};
+
+// Controlador para detalhar uma planta
+export const getPlantById = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params; 
+    
+    const plant = await Plant.findByPk(id, {
+      include: [{ model: PlantType, as: 'plantTypes' }],
+    });
+
+    if (!plant) {
+      res.status(404).json({ error: 'Planta não encontrada' });
+    }
+
+    res.status(200).json(plant);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar planta' });
   }
 };
 

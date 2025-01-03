@@ -1,9 +1,10 @@
 import express from 'express';
 
-import { getPlants, createPlant, updatePlant } from '../controllers/plantController';
+import { getPlants, createPlant, updatePlant, deletePlant, getPlantById } from '../controllers/plantController';
 import { validatePlant } from '../middlewares/validationMiddleware';
-import { createPlantType, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
+import { createPlantType, deletePlantType, getPlantTypeById, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
 
+import '../models/Associations'; 
 
 const router = express.Router();
 
@@ -13,30 +14,28 @@ router.get('/', getPlants);
 // Rota para criar uma nova planta (valida o corpo da requisição antes de criar)
 router.post('/',  validatePlant, createPlant );
 
+// Rota para obter todas as plantas
+router.get('/:id', getPlantById);
+
 // Rota para atualizar informações de uma planta
 router.put('/:id', validatePlant, updatePlant);
 
+// Rota para deletar uma planta
+router.delete('/:id', deletePlant);
+
 // Rota para buscar os tipos de plantas
-router.get('/', getPlantTypes);
+router.get('/types', getPlantTypes);
 
 // Rota para criar um tipo de plantas
-router.post('/', createPlantType );
+router.post('/types', createPlantType );
 
 // Rota para atualizar informações de um tipo de plantas
-router.put('/:id', updatePlantType);
-
-
-//TODOS:
-// Rota para deletar uma planta
-
-
-// Rota para buscar informações de uma planta
-
-
-// Rota para buscar os detalhes de um tipo de planta
-
+router.put('/types/:id', updatePlantType);
 
 // Rota para deletar um tipo de plantas
+router.delete('/types/:id', deletePlantType);
 
+// Rota para buscar os detalhes de um tipo de planta
+router.get('/types/:id', getPlantTypeById);
 
 export default router;
