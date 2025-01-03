@@ -2,11 +2,9 @@ import express from 'express';
 
 import { getPlants, createPlant, updatePlant, deletePlant } from '../controllers/plantController';
 import { validatePlant } from '../middlewares/validationMiddleware';
-import { createPlantType, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
+import { createPlantType, deletePlantType, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
 
 import '../models/Associations'; 
-
-
 
 const router = express.Router();
 
@@ -31,16 +29,15 @@ router.post('/types', createPlantType );
 // Rota para atualizar informações de um tipo de plantas
 router.put('/types/:id', updatePlantType);
 
+// Rota para deletar um tipo de plantas
+router.delete('/types/:id', deletePlantType);
 
 //TODOS:
 
-// Rota para buscar informações de uma planta
+// Rota para buscar os detalhes de uma planta
 
 
 // Rota para buscar os detalhes de um tipo de planta
-
-
-// Rota para deletar um tipo de plantas
 
 
 export default router;

@@ -19,7 +19,6 @@ export const createPlantType = async (req: Request, res: Response): Promise<void
 
     const newPlantType = await PlantType.create({ name });
 
- 
     res.status(201).json(newPlantType);
   } catch (error) {
     console.error(error);
@@ -44,5 +43,26 @@ export const updatePlantType = async (req: Request, res: Response) : Promise<voi
   } catch (error) {    
     console.error(error)
     res.status(500).json({ error: 'Erro ao atualizar os tipos de planta' });
+  }
+};
+
+// Controlador para deletar um tipo de planta
+export const deletePlantType = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const plantType = await PlantType.findByPk(id);
+    if (!plantType) {
+      res.status(404).json({ error: 'Tipo de Planta não encontrado' });
+    }
+
+    if(plantType){
+      await plantType.destroy();
+    }
+
+    res.status(204).send();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao deletar tipo de planta' });
   }
 };
