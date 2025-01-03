@@ -74,3 +74,23 @@ export const updatePlant = async (req: Request, res: Response) : Promise<void>  
   }
 };
 
+// Controlador para deletar uma planta
+export const deletePlant = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params;
+
+    const plant = await Plant.findByPk(id);
+    if (!plant) {
+      res.status(404).json({ error: 'Planta não encontrada' });
+    }
+
+    if(plant){
+      await plant.destroy();
+    }
+
+    res.status(204).send();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao deletar planta' });
+  }
+};
