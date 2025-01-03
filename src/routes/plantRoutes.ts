@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { getPlants, createPlant, updatePlant } from '../controllers/plantController';
+import { getPlants, createPlant, updatePlant, deletePlant } from '../controllers/plantController';
 import { validatePlant } from '../middlewares/validationMiddleware';
 import { createPlantType, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
 
@@ -19,6 +19,9 @@ router.post('/',  validatePlant, createPlant );
 // Rota para atualizar informações de uma planta
 router.put('/:id', validatePlant, updatePlant);
 
+// Rota para deletar uma planta
+router.delete('/:id', deletePlant);
+
 // Rota para buscar os tipos de plantas
 router.get('/', getPlantTypes);
 
@@ -30,8 +33,6 @@ router.put('/:id', updatePlantType);
 
 
 //TODOS:
-// Rota para deletar uma planta
-
 
 // Rota para buscar informações de uma planta
 
