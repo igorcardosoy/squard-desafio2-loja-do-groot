@@ -90,3 +90,24 @@ export const deletePlant = async (req: Request, res: Response): Promise<void> =>
     res.status(500).json({ error: 'Erro ao deletar planta' });
   }
 };
+
+// Controlador para detalhar uma planta
+export const getPlantById = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id } = req.params; 
+    
+    const plant = await Plant.findByPk(id, {
+      include: [{ model: PlantType, as: 'plantTypes' }],
+    });
+
+    if (!plant) {
+      res.status(404).json({ error: 'Planta não encontrada' });
+    }
+
+    res.status(200).json(plant);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar planta' });
+  }
+};
+
