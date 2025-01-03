@@ -23,13 +23,13 @@ router.put('/:id', validatePlant, updatePlant);
 router.delete('/:id', deletePlant);
 
 // Rota para buscar os tipos de plantas
-router.get('/', getPlantTypes);
+router.get('/types', getPlantTypes);
 
 // Rota para criar um tipo de plantas
-router.post('/', createPlantType );
+router.post('/types', createPlantType );
 
 // Rota para atualizar informações de um tipo de plantas
-router.put('/:id', updatePlantType);
+router.put('/types/:id', updatePlantType);
 
 
 //TODOS:
