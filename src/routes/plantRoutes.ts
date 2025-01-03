@@ -40,4 +40,8 @@ router.delete('/types/:id', deletePlantType);
 // Rota para buscar os detalhes de um tipo de planta
 
 
+// Autenticação
+
+
+
 export default router;
