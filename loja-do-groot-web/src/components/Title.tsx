@@ -1,4 +1,6 @@
-type TitleProps = {
+import '../styles/Title.css'
+
+interface TitleProps {
   title: string
 }
 
@@ -21,6 +23,7 @@ const Title = ({ title }: TitleProps) => {
       </h1>
     )
   }
-  return titleElement
+
+  return <div className='title'>{titleElement}</div>
 }
 export default Title

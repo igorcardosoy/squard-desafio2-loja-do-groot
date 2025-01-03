@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import '../styles/PlantCard.css'
 
-export type Plant = {
+export interface Plant {
   plantName: string
   price: number
   plantId: string

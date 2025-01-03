@@ -5,7 +5,7 @@ import '../styles/PlantContainer.css'
 import PlantCard, { Plant } from './PlantCard'
 import Title from './Title'
 
-type PlantContainerProps = {
+interface PlantContainerProps {
   plants: Plant[]
   title: string
 }
@@ -22,9 +22,6 @@ const PlantContainer = ({ plants, title }: PlantContainerProps) => {
           spaceBetween={30}
           grabCursor={true}
           freeMode={true}
-          pagination={{
-            clickable: true,
-          }}
           breakpoints={{
             640: {
               slidesPerView: 1.5,

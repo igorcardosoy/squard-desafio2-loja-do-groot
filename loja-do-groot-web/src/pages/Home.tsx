@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import PlantContainer from '../components/PlantContainer'
+import TakeCareOfYourPlants from '../components/TakeCareOfYourPlants'
 import '../styles/Home.css'
 
 const Home = () => {
@@ -65,6 +66,8 @@ const Home = () => {
         text='We are your one-stop destination for all things green and growing. Our website offers a wide array of stunning plants, ranging from vibrant flowers  to lush indoor foliage, allowing you to create your very own green oasis. '
         link='/products '
       />
+
+      <TakeCareOfYourPlants />
 
       <PlantContainer
         plants={plants}
