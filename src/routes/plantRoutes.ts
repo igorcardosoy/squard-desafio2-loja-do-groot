@@ -4,6 +4,9 @@ import { getPlants, createPlant, updatePlant } from '../controllers/plantControl
 import { validatePlant } from '../middlewares/validationMiddleware';
 import { createPlantType, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
 
+import '../models/Associations'; 
+
+
 
 const router = express.Router();
 
