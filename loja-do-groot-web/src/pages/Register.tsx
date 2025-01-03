@@ -4,19 +4,15 @@ import { z } from 'zod'
 import rightPlant from '../assets/right_plant.png'
 import Input from '../components/Input'
 import TextArea from '../components/TextArea'
+import { PlantLabel } from '../models/Plant'
 import '../styles/Register.css'
-
-enum PlantLabel {
-  Indoor = 'Indoor',
-  Outdoor = 'Outdoor',
-}
 
 const plantSchema = z.object({
   plantName: z.string(),
   plantSubtitle: z.string(),
   plantType: z.string(),
-  plantPrice: z.number(),
-  plantDiscountPercentage: z.number(),
+  plantPrice: z.number().positive(),
+  plantDiscountPercentage: z.number().int().min(0).max(100),
   plantLabel: z.nativeEnum(PlantLabel),
   plantFeatures: z.string(),
   plantDescription: z.string(),

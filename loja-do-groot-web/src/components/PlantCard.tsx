@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom'
+import { Plant } from '../models/Plant'
 import '../styles/PlantCard.css'
 
-export interface Plant {
-  plantName: string
-  price: number
-  plantId: string
+interface PlantCardsProps extends Plant {
   oldPrice?: number
 }
 
-const PlantCard = ({ plantName, price, plantId, oldPrice }: Plant) => {
+const PlantCard = ({ name, price, id, oldPrice }: PlantCardsProps) => {
   return (
     <div className='plant-card'>
       <img
@@ -18,14 +16,14 @@ const PlantCard = ({ plantName, price, plantId, oldPrice }: Plant) => {
       />
 
       <div className='plant-info'>
-        <h1 className='plant-name'>{plantName}</h1>
+        <h1 className='plant-name'>{name}</h1>
         <div className='price-container'>
           <span className='price'>${price.toFixed(2)}</span>
           {oldPrice && (
             <span className='old-price'>${oldPrice.toFixed(2)}</span>
           )}
         </div>
-        <Link className='plant-button' to={`/product/${plantId}`}>
+        <Link className='plant-button' to={`/product/${id}`}>
           View Product{' '}
         </Link>
       </div>

@@ -1,8 +1,9 @@
 import { FreeMode, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/swiper-bundle.css'
+import { Plant } from '../models/Plant'
 import '../styles/PlantContainer.css'
-import PlantCard, { Plant } from './PlantCard'
+import PlantCard from './PlantCard'
 import Title from './Title'
 
 interface PlantContainerProps {
@@ -39,7 +40,7 @@ const PlantContainer = ({ plants, title }: PlantContainerProps) => {
           modules={[FreeMode, Pagination]}
           className='mySwiper'>
           {plants.map(plant => (
-            <SwiperSlide key={plant.plantId}>
+            <SwiperSlide key={plant.id}>
               <PlantCard {...plant} />
             </SwiperSlide>
           ))}

@@ -1,59 +1,60 @@
 import Hero from '../components/Hero'
 import PlantContainer from '../components/PlantContainer'
 import TakeCareOfYourPlants from '../components/TakeCareOfYourPlants'
+import { Plant } from '../models/Plant'
 import '../styles/Home.css'
 
 const Home = () => {
   const plants = [
     {
-      plantId: '1',
-      plantName: 'Plant 1',
+      id: '1',
+      name: 'Plant 1',
       price: 15,
     },
     {
-      plantId: '2',
-      plantName: 'Plant 2',
+      id: '2',
+      name: 'Plant 2',
       price: 20,
       oldPrice: 25,
     },
     {
-      plantId: '3',
-      plantName: 'Plant 3',
+      id: '3',
+      name: 'Plant 3',
       price: 30,
     },
     {
-      plantId: '4',
-      plantName: 'Plant 4',
+      id: '4',
+      name: 'Plant 4',
       price: 40,
     },
     {
-      plantId: '5',
-      plantName: 'Plant 5',
+      id: '5',
+      name: 'Plant 5',
       price: 50,
     },
     {
-      plantId: '6',
-      plantName: 'Plant 6',
+      id: '6',
+      name: 'Plant 6',
       price: 60,
     },
     {
-      plantId: '7',
-      plantName: 'Plant 7',
+      id: '7',
+      name: 'Plant 7',
       price: 70,
     },
     {
-      plantId: '8',
-      plantName: 'Plant 8',
+      id: '8',
+      name: 'Plant 8',
       price: 80,
     },
     {
-      plantId: '9',
-      plantName: 'Plant 9',
+      id: '9',
+      name: 'Plant 9',
       price: 90,
     },
     {
-      plantId: '10',
-      plantName: 'Plant 10',
+      id: '10',
+      name: 'Plant 10',
       price: 100,
     },
   ]
@@ -70,11 +71,11 @@ const Home = () => {
       <TakeCareOfYourPlants />
 
       <PlantContainer
-        plants={plants}
+        plants={plants as Plant[]}
         title='This Weeks Most Popular **And Best Selling**'
       />
 
-      <PlantContainer plants={plants} title='**Plants In** Sale' />
+      <PlantContainer plants={plants as Plant[]} title='**Plants In** Sale' />
     </div>
   )
 }
