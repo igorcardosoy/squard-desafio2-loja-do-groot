@@ -1,8 +1,8 @@
 import express from 'express';
 
-import { getPlants, createPlant, updatePlant, deletePlant } from '../controllers/plantController';
+import { getPlants, createPlant, updatePlant, deletePlant, getPlantById } from '../controllers/plantController';
 import { validatePlant } from '../middlewares/validationMiddleware';
-import { createPlantType, deletePlantType, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
+import { createPlantType, deletePlantType, getPlantTypeById, getPlantTypes, updatePlantType } from '../controllers/plantTypeController';
 
 import '../models/Associations'; 
 
@@ -15,7 +15,7 @@ router.get('/', getPlants);
 router.post('/',  validatePlant, createPlant );
 
 // Rota para obter todas as plantas
-router.get('/:id', getPlants);
+router.get('/:id', getPlantById);
 
 // Rota para atualizar informações de uma planta
 router.put('/:id', validatePlant, updatePlant);
@@ -35,13 +35,7 @@ router.put('/types/:id', updatePlantType);
 // Rota para deletar um tipo de plantas
 router.delete('/types/:id', deletePlantType);
 
-//TODOS:
-
 // Rota para buscar os detalhes de um tipo de planta
-
-
-// Autenticação
-
-
+router.get('/types/:id', getPlantTypeById);
 
 export default router;
