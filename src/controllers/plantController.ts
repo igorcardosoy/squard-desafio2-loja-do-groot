@@ -2,6 +2,7 @@
 import { Request, Response } from 'express';
 import Plant from '../models/Plant'; 
 import PlantType from '../models/PlantType';
+import sequelize from '../config/dbConfig';
 
 // Controlador para obter todas as plantas
 export const getPlants = async (req: Request, res: Response) => {
@@ -16,34 +17,44 @@ export const getPlants = async (req: Request, res: Response) => {
 
 // Controlador para criar uma nova planta
 export const createPlant = async (req: Request, res: Response): Promise<void> => {
+  
+  const transaction = await sequelize.transaction();
+
   try {
     const { name, subtitle, price, discountPercentage, description, features, imgUrl, plantTypeId } = req.body;
 
     if (!Array.isArray(plantTypeId) || !plantTypeId.every((id: any) => typeof id === 'number')) {
-        res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
-        return;
+      await transaction.rollback();
+      res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
     }
 
-    const newPlant = await Plant.create({
-      name,
-      subtitle,
-      price,
-      discountPercentage,
-      description,
-      features,
-      imgUrl,
-      isInSale: true
-    });
+    const newPlant = await Plant.create(
+      {
+        name,
+        subtitle,
+        price,
+        discountPercentage,
+        description,
+        features,
+        imgUrl,
+        isInSale: true,
+      },
+      { transaction }
+    );
 
-    await newPlant.addPlantTypes(plantTypeId);
+    await newPlant.addPlantTypes(plantTypeId, { transaction });
 
     const createdPlant = await Plant.findByPk(newPlant.id, {
       include: [{ model: PlantType, as: 'plantTypes' }],
+      transaction,
     });
+
+    await transaction.commit();
 
     res.status(201).json(createdPlant);
   } catch (error) {
-    console.error(error)
+    console.error(error);
+    await transaction.rollback();
     res.status(500).json({ error: 'Erro ao criar planta' });
   }
 };
