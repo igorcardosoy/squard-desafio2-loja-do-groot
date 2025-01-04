@@ -1,4 +1,4 @@
-import { DataTypes, Model, Optional } from 'sequelize';
+import { DataTypes, Model, Optional, Transaction } from 'sequelize';
 import sequelize from '../config/dbConfig';
 import PlantType from './PlantType'
 
@@ -28,7 +28,7 @@ class Plant extends Model<PlantAttributes, PlantCreationAttributes> implements P
   public isInSale!: boolean;
 
   // Métodos para relações muitos-para-muitos
-  public addPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
+  public addPlantTypes!: (plantTypes: number[] | PlantType[],  options?: { transaction?: Transaction }) => Promise<void>;
   public getPlantTypes!: () => Promise<PlantType[]>;
   public setPlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
   public removePlantTypes!: (plantTypes: number[] | PlantType[]) => Promise<void>;
