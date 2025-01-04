@@ -1,7 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import plantRoutes from './routes/plantRoutes';
+import plantRoutes from './routes/plant.routes';
+import plantTypesRoutes from './routes/plant-types.routes';
 
 import sequelize from './config/dbConfig'; 
 
@@ -14,7 +15,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/plants', plantRoutes);
+app.use('/plants', plantRoutes);
+app.use('/plant-types', plantTypesRoutes);
 
 const startServer = async () => {
   try {

@@ -20,8 +20,8 @@ export const createPlant = async (req: Request, res: Response): Promise<void> =>
     const { name, subtitle, price, discountPercentage, description, features, imgUrl, plantTypeId } = req.body;
 
     if (!Array.isArray(plantTypeId) || !plantTypeId.every((id: any) => typeof id === 'number')) {
-       res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
-       return;
+        res.status(400).json({ error: 'plantTypeId deve ser um array de números' });
+        return;
     }
 
     const newPlant = await Plant.create({
@@ -100,6 +100,7 @@ export const getPlantById = async (req: Request, res: Response): Promise<void> =
 
     if (!plant) {
       res.status(404).json({ error: 'Planta não encontrada' });
+      return;
     }
 
     res.status(200).json(plant);
