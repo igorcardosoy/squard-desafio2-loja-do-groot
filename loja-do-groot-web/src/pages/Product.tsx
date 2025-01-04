@@ -1,11 +1,15 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import cactus from '../assets/cactus.png'
+import Button from '../components/Button'
 import Title from '../components/Title'
 import { Plant, PlantLabel } from '../models/Plant'
+import '../styles/Product.css'
 
 const Product = () => {
   const { id } = useParams<{ id: string }>()
   const [product, setProduct] = useState<Plant>({} as Plant)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -25,40 +29,54 @@ const Product = () => {
     }
 
     fetchProduct()
+    setLoading(false)
   }, [id])
+
+  if (loading) return <div>Loading...</div>
 
   return (
     <div className='product-container'>
       <div className='product-image'>
-        <img src='' alt='' />
+        <img src={cactus} alt='Cactus' />
       </div>
       <div className='product-info'>
         <div>
           <Title title={product.name} />
-          <h2 className='subtitle'>{product.subtitle}</h2>
+          <h2 className='subtitle lato'>{product.subtitle}</h2>
         </div>
         <div className='labels'>
-          <span>{product.label}</span>
-          <span>{product.type}</span>
+          <span>{product.label.toLocaleLowerCase()}</span>
+          <span>{product.type.toLocaleLowerCase()}</span>
         </div>
-        <div className='price'>
-          <span>{product.price}</span>
+        <div className='price lato'>
           {product.discountPercentage > 0 ? (
-            <span>{product.discountPercentage}%</span>
+            <span>
+              {'$' +
+                (
+                  product.price *
+                  (1 - product.discountPercentage / 100)
+                ).toFixed(2)}
+            </span>
           ) : (
             ''
           )}
-
-          <button>Checkout</button>
+          <span
+            className={product.discountPercentage > 0 ? 'line-through' : ''}>
+            {'$' + product.price.toFixed(2)}
+          </span>
         </div>
 
-        <div className='features'>
+        <div>
+          <Button text='Check out' />
+        </div>
+
+        <div className='features lato'>
           <h3>Features</h3>
-          <p>{product.features}</p>
+          <p className='text'>{product.features}</p>
         </div>
-        <div className='description'>
+        <div className='description lato'>
           <h3>Description</h3>
-          <p>{product.description}</p>
+          <p className='text'>{product.description}</p>
         </div>
       </div>
     </div>
