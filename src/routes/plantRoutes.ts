@@ -17,17 +17,17 @@ router.post('/',  validatePlant, createPlant );
 // Rota para obter todas as plantas
 router.get('/:id', getPlantById);
 
-// Rota para atualizar informações de uma planta
-router.put('/:id', validatePlant, updatePlant);
-
-// Rota para deletar uma planta
-router.delete('/:id', deletePlant);
-
 // Rota para buscar os tipos de plantas
 router.get('/types', getPlantTypes);
 
 // Rota para criar um tipo de plantas
 router.post('/types', createPlantType );
+
+// Rota para atualizar informações de uma planta
+router.put('/:id', validatePlant, updatePlant);
+
+// Rota para deletar uma planta
+router.delete('/:id', deletePlant);
 
 // Rota para atualizar informações de um tipo de plantas
 router.put('/types/:id', updatePlantType);
