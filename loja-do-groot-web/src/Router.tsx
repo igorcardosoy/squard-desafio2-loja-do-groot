@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom'
-import AboutUs from '../pages/AboutUs'
-import Home from '../pages/Home'
-import Product from '../pages/Product'
-import Products from '../pages/Products'
-import Register from '../pages/Register'
+import AboutUs from './pages/AboutUs'
+import Home from './pages/Home'
+import Product from './pages/Product'
+import Products from './pages/Products'
+import Register from './pages/Register'
 
 const Router = () => {
   return (
