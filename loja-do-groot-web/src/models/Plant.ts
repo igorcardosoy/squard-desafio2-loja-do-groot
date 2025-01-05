@@ -1,16 +1,17 @@
-export enum PlantLabel {
-  Indoor = 'Indoor',
-  Outdoor = 'Outdoor',
-}
-
 export interface Plant {
   id: string
   name: string
   subtitle: string
-  type: string
+  plantTypeId: Array<number>
   price: number
+  isInSale: boolean
   discountPercentage: number
-  label: PlantLabel
   features: string
   description: string
+  imgUrl: string
+}
+
+export interface PlantType {
+  id: number
+  name: string
 }

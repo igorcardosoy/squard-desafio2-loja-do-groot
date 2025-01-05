@@ -2,8 +2,8 @@ import { ClerkLoaded, SignedIn, SignedOut } from '@clerk/clerk-react'
 import './App.css'
 import Footer from './components/Footer'
 import Navbar from './components/Navbar'
-import Router from './components/Router'
 import LoginPage from './pages/LoginPage'
+import Router from './Router'
 
 function App() {
   return (

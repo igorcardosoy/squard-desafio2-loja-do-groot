@@ -4,8 +4,12 @@ import { z } from 'zod'
 import rightPlant from '../assets/right_plant.png'
 import Input from '../components/Input'
 import TextArea from '../components/TextArea'
-import { PlantLabel } from '../models/Plant'
 import '../styles/Register.css'
+
+enum PlantLabel {
+  Indoor = 'Indoor',
+  Outdoor = 'Outdoor',
+}
 
 const plantSchema = z.object({
   plantName: z.string(),

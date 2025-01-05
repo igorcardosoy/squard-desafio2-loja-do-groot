@@ -1,35 +1,37 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import cactus from '../assets/cactus.png'
 import Button from '../components/Button'
 import Title from '../components/Title'
-import { Plant, PlantLabel } from '../models/Plant'
+import { Plant, PlantType } from '../models/Plant'
 import '../styles/Product.css'
 
 const Product = () => {
   const { id } = useParams<{ id: string }>()
   const [product, setProduct] = useState<Plant>({} as Plant)
   const [loading, setLoading] = useState(true)
+  const [plantTypes, setPlantTypes] = useState<PlantType[]>([])
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const plant: Plant = {
-        id: id ?? '',
-        name: 'Plant name',
-        subtitle: 'Plant subtitle',
-        type: 'Plant type',
-        price: 100,
-        discountPercentage: 10,
-        label: PlantLabel.Indoor,
-        features: 'Plant features',
-        description: 'Plant description',
-      }
-
-      setProduct(plant)
+    async function fetchData() {
+      const response = await axios.get('http://localhost:3000/plant-types')
+      setPlantTypes(response.data)
     }
 
-    fetchProduct()
-    setLoading(false)
+    const fetchProduct = async () => {
+      const response = await axios.get(`http://localhost:3000/plants/${id}`)
+      console.log(response.data)
+      setProduct(response.data)
+    }
+
+    const doFetch = async () => {
+      await fetchData()
+      await fetchProduct()
+
+      setLoading(false)
+    }
+
+    doFetch()
   }, [id])
 
   if (loading) return <div>Loading...</div>
@@ -37,7 +39,14 @@ const Product = () => {
   return (
     <div className='product-container'>
       <div className='product-image'>
-        <img src={cactus} alt='Cactus' />
+        <img
+          src={
+            product.imgUrl.includes('example')
+              ? 'https://placehold.co/500x500'
+              : product.imgUrl
+          }
+          alt='plant'
+        />
       </div>
       <div className='product-info'>
         <div>
@@ -45,25 +54,37 @@ const Product = () => {
           <h2 className='subtitle lato'>{product.subtitle}</h2>
         </div>
         <div className='labels'>
-          <span>{product.label.toLocaleLowerCase()}</span>
-          <span>{product.type.toLocaleLowerCase()}</span>
+          {product.plantTypeId
+            ? plantTypes
+                .filter(plantType => product.plantTypeId.includes(plantType.id))
+                .map(plantType => (
+                  <span key={plantType.id} className='label'>
+                    {plantType.name}
+                  </span>
+                ))
+            : ''}
         </div>
         <div className='price lato'>
           {product.discountPercentage > 0 ? (
-            <span>
-              {'$' +
-                (
-                  product.price *
-                  (1 - product.discountPercentage / 100)
-                ).toFixed(2)}
+            <>
+              <span>
+                {'$' +
+                  (
+                    product.price *
+                    (1 - product.discountPercentage / 100)
+                  ).toFixed(2)}
+              </span>
+            </>
+          ) : (
+            <span>{'$' + product.price}</span>
+          )}
+          {product.discountPercentage > 0 ? (
+            <span className='line-through'>
+              {'$' + product.price.toFixed(2)}
             </span>
           ) : (
             ''
           )}
-          <span
-            className={product.discountPercentage > 0 ? 'line-through' : ''}>
-            {'$' + product.price.toFixed(2)}
-          </span>
         </div>
 
         <div>
@@ -72,7 +93,17 @@ const Product = () => {
 
         <div className='features lato'>
           <h3>Features</h3>
-          <p className='text'>{product.features}</p>
+          <p className='text'>
+            {product.features
+              .split('.')
+              .slice(0, -1)
+              .map((feature, index) => (
+                <span key={index}>
+                  • {feature}.
+                  <br />
+                </span>
+              ))}
+          </p>
         </div>
         <div className='description lato'>
           <h3>Description</h3>
