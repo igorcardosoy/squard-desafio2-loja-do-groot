@@ -1,1 +1,0 @@
-# squard-desafio2-loja-do-groot
