@@ -39,6 +39,8 @@
 .price {
   font-size: 20px;
   font-weight: 500;
+  display: flex;
+  gap: 15px;
 }
 
 .old-price {
@@ -107,6 +109,7 @@
 
   .price {
     font-size: 16px;
+    gap: 8px;
   }
 
   .old-price {
