@@ -19,7 +19,7 @@ export const createPlantTypeIfNotExists = async (
 ): Promise<number> => {
   let plantTypeId = getPlantTypeId(plantTypes, data.plantType)
   if (!plantTypeId) {
-    await createPlantType(data.plantType)
+    await createPlantType(data.plantType.toLowerCase())
     plantTypes = await fetchPlantTypes()
     plantTypeId = getPlantTypeId(plantTypes, data.plantType)
   }
