@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { OrbitProgress } from 'react-loading-indicators'
 import { useParams } from 'react-router-dom'
 import Button from '../components/Button'
 import Title from '../components/Title'
@@ -21,7 +22,12 @@ const Product = () => {
     fetchProduct()
   }, [id])
 
-  if (loading) return <div>Loading...</div>
+  if (loading)
+    return (
+      <div className='loading'>
+        <OrbitProgress color='#000' size='medium' text='' textColor='' />
+      </div>
+    )
 
   return (
     <div className='product-container'>

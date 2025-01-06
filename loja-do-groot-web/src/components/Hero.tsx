@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import leftPlant from '../assets/left_plant.png'
-import rightPlant from '../assets/right_plant.png'
+import leftPlant from '../assets/images/left_plant.png'
+import rightPlant from '../assets/images/right_plant.png'
 import '../styles/Hero.css'
 import TextContainer from './TextContainer'
 import Title from './Title'
