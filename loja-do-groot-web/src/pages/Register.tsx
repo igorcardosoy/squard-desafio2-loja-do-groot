@@ -115,22 +115,38 @@ const Register = () => {
       <div className='form-container'>
         <h1>Plant registration</h1>
         <form onSubmit={handleSubmit(handlePlantRegistration)} method='post'>
-          <Input label='Plant name' {...register('plantName')} />
+          <Input
+            label='Plant name'
+            placeholder='Echinocereus Cactus'
+            {...register('plantName')}
+          />
           {errors.plantName?.message && (
             <p className='error'>{errors.plantName?.message}</p>
           )}
 
-          <Input label='Plant subtitle' {...register('plantSubtitle')} />
+          <Input
+            label='Plant subtitle'
+            placeholder='A majestic addition to your plant collection'
+            {...register('plantSubtitle')}
+          />
           {errors.plantSubtitle?.message && (
             <p className='error'>{errors.plantSubtitle?.message}</p>
           )}
 
-          <Input label='Image URL' {...register('plantImgUrl')} />
+          <Input
+            label='Image URL'
+            placeholder='https://example.com/plant.jpg'
+            {...register('plantImgUrl')}
+          />
           {errors.plantImgUrl?.message && (
             <p className='error'>{errors.plantImgUrl?.message}</p>
           )}
 
-          <Input label='Plant type' {...register('plantType')} />
+          <Input
+            label='Plant type'
+            placeholder='Cactus'
+            {...register('plantType')}
+          />
           {errors.plantType?.message && (
             <p className='error'>{errors.plantType?.message}</p>
           )}
@@ -140,6 +156,7 @@ const Register = () => {
               label='Price'
               type='number'
               step={0.01}
+              placeholder='$139.99'
               {...register('plantPrice', { valueAsNumber: true })}
             />
             {errors.plantPrice?.message && (
@@ -149,6 +166,8 @@ const Register = () => {
             <Input
               label='Discount percentage'
               type='number'
+              step={1}
+              placeholder='20%'
               {...register('plantDiscountPercentage', { valueAsNumber: true })}
             />
             {errors.plantDiscountPercentage?.message && (
@@ -176,12 +195,20 @@ const Register = () => {
             </div>
           </div>
 
-          <TextArea label='Features' {...register('plantFeatures')} />
+          <TextArea
+            label='Features'
+            placeholder='Species: Echinocereus...'
+            {...register('plantFeatures')}
+          />
           {errors.plantFeatures?.message && (
             <p className='error'>{errors.plantFeatures?.message}</p>
           )}
 
-          <TextArea label='Description' {...register('plantDescription')} />
+          <TextArea
+            label='Description'
+            placeholder='Ladyfinger cactus...'
+            {...register('plantDescription')}
+          />
           {errors.plantDescription?.message && (
             <p className='error'>{errors.plantDescription?.message}</p>
           )}
