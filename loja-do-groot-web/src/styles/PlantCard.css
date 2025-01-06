@@ -1,6 +1,6 @@
 .plant-card {
   width: 100%;
-  max-width: 500px;
+  max-width: 388px;
 
   display: flex;
   flex-flow: column;
@@ -12,6 +12,8 @@
 }
 
 .plant-image {
+  width: 100%;
+  height: 388px;
   object-fit: cover;
 }
 
@@ -45,6 +47,12 @@
   color: #afb2aa;
 }
 
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .plant-button {
   border: #8a9b6e 1.62px solid;
   background-color: #8a9b6e1f;
@@ -53,12 +61,35 @@
   border-radius: 20px;
   padding: 6.5px 13px;
   width: fit-content;
+  cursor: pointer;
+  transition: 0.2s;
+  text-align: center;
+}
+
+.plant-button:hover {
+  background-color: #8a9b6e;
+  color: #fff;
+}
+
+.delete {
+  background-color: #d11a292c !important;
+  color: #8a0f1a !important;
+  border: #d11a29 1.62px solid;
+}
+
+.delete:hover {
+  background-color: rgb(126, 3, 3) !important;
+  color: #fff !important;
 }
 
 @media (max-width: 768px) {
+  .plant-name {
+    font-size: 20px !important;
+  }
+
   .plant-card {
     max-width: 100%;
-    height: fit-content
+    height: fit-content;
   }
 
   .plant-image {

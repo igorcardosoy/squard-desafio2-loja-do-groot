@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get('http://localhost:3000/plants')
+      const response = await axios.get('http://localhost:3000/plants/')
       setPlants(response.data)
     }
 
