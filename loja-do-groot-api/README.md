@@ -4,18 +4,7 @@
 
 ---
 
-## Para executar o backend
 
-Necessário ter instalado na máquina:
-- Um IDE (preferencialmente VS Code)
-- Node.js (recomendado a versão 22.9.0 ou mais recente)
-
-Clonar o repositório do github com o comando "git clone" (necessário ter o git instalado)
-Abrir a pasta do projeto em um IDE (preferencialmente VS Code)
-
-Usando o terminal do VS Code na raiz do projeto, digitar "npm install", aguardar o download e instalação de todas as dependências do projeto.
-
-Para buildar e iniciar a aplicação, abrir o terminal do VS Code no diretório "src" e digitar "npm start".
 
 ## Rotas
 

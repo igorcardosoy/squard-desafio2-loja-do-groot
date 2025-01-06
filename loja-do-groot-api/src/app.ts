@@ -4,8 +4,7 @@ import cors from 'cors';
 import plantRoutes from './routes/plant.routes';
 import plantTypesRoutes from './routes/plant-types.routes';
 
-import sequelize from './config/dbConfig'; 
-
+import sequelize from './config/dbConfig';
 
 dotenv.config();
 
@@ -38,4 +37,3 @@ const startServer = async () => {
 startServer();
 
 export default app;
-

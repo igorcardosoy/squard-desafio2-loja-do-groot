@@ -3,11 +3,21 @@ import { Request, Response } from 'express';
 import Plant from '../models/Plant'; 
 import PlantType from '../models/PlantType';
 import sequelize from '../config/dbConfig';
+import PlantTypePlant from '../models/PlantTypePlant';
 
 // Controlador para obter todas as plantas
 export const getPlants = async (req: Request, res: Response) => {
   try {
-    const plants = await Plant.findAll();
+    const plants = await Plant.findAll({
+      include: [
+        {
+          model: PlantType, 
+          as: 'plantTypes',
+          attributes: ['id', 'name']
+        },
+      ]
+    });
+
     res.status(200).json(plants); 
   } catch (error) {
     console.error(error)
@@ -42,10 +52,21 @@ export const createPlant = async (req: Request, res: Response): Promise<void> =>
       { transaction }
     );
 
-    await newPlant.addPlantTypes(plantTypeId, { transaction });
-
+    for (const typeId of plantTypeId) {
+      await PlantTypePlant.create(
+        { plantId: newPlant.id, plantTypeId: typeId },
+        { transaction }
+      );
+    }
+    
     const createdPlant = await Plant.findByPk(newPlant.id, {
-      include: [{ model: PlantType, as: 'plantTypes' }],
+      include: [
+        {
+          model: PlantType,
+          as: 'plantTypes',
+          attributes: ['id', 'name'], // Retorne os campos relevantes
+        },
+      ],
       transaction,
     });
 
