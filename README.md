@@ -82,7 +82,7 @@ To run the project's frontend locally, follow these steps:
 1. Navigate to the project directory:
 
    ```sh
-   cd loja-do-groot-api
+   cd loja-do-groot-api/src
    ```
 
 2. Install dependencies:
@@ -91,13 +91,7 @@ To run the project's frontend locally, follow these steps:
    npm install
    ```
 
-3. Navigate to the "src" directory:
-
-   ```sh
-   cd src
-   ```
-
-4. Start the server:
+3. Start the server:
 
    ```sh
    npm start
@@ -107,7 +101,7 @@ To run the project's frontend locally, follow these steps:
 
 After starting the development server, you can access the application at `http://localhost:5173`.
 
-## Project Structure (Frontend)
+## Project files structure (Frontend)
 
 The frontend structure is organized as follows:
 
@@ -156,7 +150,7 @@ loja-do-groot-web/
 ├── vite.config.ts
 ```
 
-## Project Structure (Backend)
+## Project files structure (Backend)
 
 The backend structure is organized as follows:
 
@@ -164,7 +158,7 @@ The backend structure is organized as follows:
 loja-do-groot-api/
 ├── .env
 ├── .gitignore
-├── README.md
+├── routes-infos.md
 ├── tsconfig.json
 ├── src/
 │   ├── app.ts
