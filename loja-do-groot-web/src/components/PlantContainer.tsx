@@ -20,21 +20,21 @@ const PlantContainer = ({ plants, title }: PlantContainerProps) => {
       <div className='slider-container'>
         <Swiper
           slidesPerView={1.5}
-          spaceBetween={30}
+          spaceBetween={5}
           grabCursor={true}
           freeMode={true}
           breakpoints={{
             640: {
-              slidesPerView: 1.5,
-              spaceBetween: 20,
+              slidesPerView: 2.5,
+              spaceBetween: 10,
             },
             768: {
-              slidesPerView: 2.5,
-              spaceBetween: 40,
-            },
-            1024: {
               slidesPerView: 3.5,
-              spaceBetween: 50,
+              spaceBetween: 20,
+            },
+            1480: {
+              slidesPerView: 4.5,
+              spaceBetween: 30,
             },
           }}
           modules={[FreeMode, Pagination]}
