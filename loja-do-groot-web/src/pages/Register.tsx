@@ -101,6 +101,7 @@ const Register = () => {
               label='Price'
               type='number'
               step={0.01}
+              min={0}
               placeholder='$139.99'
               {...register('plantPrice', { valueAsNumber: true })}
             />
@@ -112,6 +113,8 @@ const Register = () => {
               label='Discount percentage'
               type='number'
               step={1}
+              min={0}
+              max={100}
               placeholder='20%'
               {...register('plantDiscountPercentage', { valueAsNumber: true })}
             />
