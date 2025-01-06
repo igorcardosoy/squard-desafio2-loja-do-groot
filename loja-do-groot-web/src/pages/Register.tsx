@@ -65,17 +65,20 @@ const Register = () => {
 
     const plantLabelId = data.plantLabel === 'Indoor' ? 1 : 2
 
-    if (plantTypes.data.length === 0) {
+    let exists = false
+    if (plantTypes.data.length !== 0) {
       plantTypes.data.forEach((plantType: PlantType) => {
-        if (plantType.name === data.plantType) {
-          return
+        if (plantType.name.toLowerCase() === data.plantType.toLowerCase()) {
+          exists = true
         }
       })
     }
 
-    await axios.post('http://localhost:3000/plant-types/', {
-      name: data.plantType,
-    })
+    if (!exists) {
+      await axios.post('http://localhost:3000/plant-types/', {
+        name: data.plantType,
+      })
+    }
 
     plantTypes = await axios.get('http://localhost:3000/plant-types/')
 
