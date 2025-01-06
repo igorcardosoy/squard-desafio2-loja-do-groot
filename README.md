@@ -31,8 +31,13 @@ Groot's Store is a fictional e-commerce offering a wide variety of plants. The g
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vitejs.dev/)
-- [Clerk](https://clerk.dev/)
-- [Swiper](https://swiperjs.com/)
+- [Clerk](https://clerk.dev/) para autenticação
+- [Swiper](https://swiperjs.com/) para carrosséis
+- [Axios](https://axios-http.com/) para requisições HTTP
+- [React Hook Form](https://react-hook-form.com/) para gerenciamento de formulários
+- [Zod](https://zod.dev/) para validação de esquemas
+- [React Router](https://reactrouter.com/) para roteamento
+- [React Loading Indicators](https://www.npmjs.com/package/react-loading-indicators) para indicadores de carregamento
 
 ## Requirements
 
@@ -118,16 +123,32 @@ loja-do-groot-web/
 │   ├── App.css
 │   ├── App.tsx
 │   ├── assets/
+│   │   ├── icons/
+│   │   │   ├── fertilizer.svg
+│   │   │   ├── sun.svg
+│   │   │   ├── water.svg
+│   │   ├── images/
+│   │   │   ├── left_plant.png
+│   │   │   ├── right_plant.png
 │   ├── components/
+│   │   ├── AboutUsCard.tsx
+│   │   ├── Button.tsx
+│   │   ├── ColumnText.tsx
 │   │   ├── Footer.tsx
 │   │   ├── Hero.tsx
+│   │   ├── Icon.tsx
+│   │   ├── Input.tsx
 │   │   ├── Navbar.tsx
 │   │   ├── PlantCard.tsx
 │   │   ├── PlantContainer.tsx
-│   │   ├── Router.tsx
+│   │   ├── TakeCareOfYourPlants.tsx
+│   │   ├── TextArea.tsx
+│   │   ├── TextContainer.tsx
 │   │   ├── Title.tsx
-│   ├── index.css
-│   ├── main.tsx
+│   ├── hooks/
+│   │   └── useFetchPlants.ts
+│   ├── models/
+│   │   └── Plant.ts
 │   ├── pages/
 │   │   ├── AboutUs.tsx
 │   │   ├── Home.tsx
@@ -135,15 +156,38 @@ loja-do-groot-web/
 │   │   ├── Product.tsx
 │   │   ├── Products.tsx
 │   │   ├── Register.tsx
+│   ├── services/
+│   │   └── plantService.ts
 │   ├── styles/
+│   │   ├── AboutUs.css
+│   │   ├── AboutUsCard.css
+│   │   ├── Button.css
+│   │   ├── ColumnText.css
 │   │   ├── Footer.css
 │   │   ├── Hero.css
 │   │   ├── Home.css
+│   │   ├── Icon.css
+│   │   ├── Input.css
 │   │   ├── LoginPage.css
 │   │   ├── Navbar.css
 │   │   ├── PlantCard.css
 │   │   ├── PlantContainer.css
+│   │   ├── Product.css
+│   │   ├── Products.css
+│   │   ├── Register.css
+│   │   ├── TakeCareOfYourPlants.css
+│   │   ├── TextArea.css
+│   │   ├── TextContainer.css
+│   │   ├── Title.css
+│   ├── validation/
+│   │   └── plantSchema.ts
+│   ├── App.tsx
+│   ├── App.css
+│   ├── index.tsx
+│   ├── index.css
+│   ├── Router.tsx
 │   ├── vite-env.d.ts
+│   └── ...
 ├── tsconfig.app.json
 ├── tsconfig.json
 ├── tsconfig.node.json
