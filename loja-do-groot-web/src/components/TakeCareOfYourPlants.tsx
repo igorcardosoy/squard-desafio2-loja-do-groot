@@ -2,13 +2,13 @@ import '../styles/TakeCareOfYourPlants.css'
 import TextContainer from './TextContainer'
 import Title from './Title'
 
-import image1 from '../assets/image_1.png'
-import image2 from '../assets/image_2.png'
-import image3 from '../assets/image_3.png'
+import image1 from '../assets/images/image_1.png'
+import image2 from '../assets/images/image_2.png'
+import image3 from '../assets/images/image_3.png'
 
-import iconFertilizer from '../assets/fertilizer.svg'
-import iconSun from '../assets/sun.svg'
-import iconWater from '../assets/water.svg'
+import iconFertilizer from '../assets/icons/fertilizer.svg'
+import iconSun from '../assets/icons/sun.svg'
+import iconWater from '../assets/icons/water.svg'
 import ColumnText from './ColumnText'
 
 const TakeCareOfYourPlants = () => {

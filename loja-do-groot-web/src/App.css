@@ -8,3 +8,10 @@ main {
   display: flex;
   flex: 1;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}

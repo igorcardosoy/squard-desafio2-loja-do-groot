@@ -1,22 +1,20 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { OrbitProgress } from 'react-loading-indicators'
 import Hero from '../components/Hero'
 import PlantContainer from '../components/PlantContainer'
 import TakeCareOfYourPlants from '../components/TakeCareOfYourPlants'
-import { Plant } from '../models/Plant'
+import useFetchPlants from '../hooks/useFetchPlants'
 import '../styles/Home.css'
 
 const Home = () => {
-  const [plants, setPlants] = useState<Plant[]>([])
+  const { plants, loading, error } = useFetchPlants()
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get('http://localhost:3000/plants/')
-      setPlants(response.data)
-    }
-
-    fetchData()
-  }, [])
+  if (loading)
+    return (
+      <div className='loading'>
+        <OrbitProgress color='#000' size='medium' text='' textColor='' />
+      </div>
+    )
+  if (error) return <div>{error}</div>
 
   return (
     <div className='home'>
