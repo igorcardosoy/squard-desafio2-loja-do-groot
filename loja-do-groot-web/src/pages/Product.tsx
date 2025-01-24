@@ -1,33 +1,22 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { OrbitProgress } from 'react-loading-indicators'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/Button'
+import Loading from '../components/Loading'
 import Title from '../components/Title'
-import { Plant } from '../models/Plant'
+import useFetchPlant from '../hooks/useFetchPlant'
 import '../styles/Product.css'
 
 const Product = () => {
+  const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
-  const [product, setProduct] = useState<Plant>({} as Plant)
-  const [loading, setLoading] = useState(true)
+  const { plant: product, loading, error } = useFetchPlant(id || '')
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const response = await axios.get(`http://localhost:3000/plants/${id}`)
-      setProduct(response.data)
-      setLoading(false)
-    }
+  if (loading) return <Loading color='#000' size='medium' />
 
-    fetchProduct()
-  }, [id])
-
-  if (loading)
-    return (
-      <div className='loading'>
-        <OrbitProgress color='#000' size='medium' text='' textColor='' />
-      </div>
-    )
+  if (error || !product || !product.plantTypes) {
+    console.error(error)
+    navigate('/404')
+    return
+  }
 
   return (
     <div className='product-container'>

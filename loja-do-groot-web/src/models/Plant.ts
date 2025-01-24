@@ -1,8 +1,9 @@
 export interface Plant {
-  id: string
+  id?: string
   name: string
   subtitle: string
-  plantTypes: Array<PlantType>
+  plantTypes?: Array<PlantType>
+  plantTypeId?: Array<number>
   price: number
   isInSale: boolean
   discountPercentage: number

@@ -1,12 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import axios from 'axios'
 import { useForm } from 'react-hook-form'
 import rightPlant from '../assets/images/right_plant.png'
 import Button from '../components/Button'
 import Input from '../components/Input'
 import TextArea from '../components/TextArea'
+import { Plant } from '../models/Plant'
 import {
   createDefaultPlantType,
+  createPlant,
   createPlantTypeIfNotExists,
   getPlantLabelId,
 } from '../services/plantService'
@@ -35,7 +36,7 @@ const Register = () => {
         window.location.href = '/'
       }
 
-      const payload = {
+      const payload: Plant = {
         name: data.plantName,
         subtitle: data.plantSubtitle,
         plantTypeId: [plantLabelId, plantTypeId],
@@ -47,7 +48,7 @@ const Register = () => {
         imgUrl: data.plantImgUrl,
       }
 
-      await axios.post('http://localhost:3000/plants/', payload)
+      await createPlant(payload)
       window.location.href = '/'
     } catch (error) {
       console.error('Failed to register plant:', error)

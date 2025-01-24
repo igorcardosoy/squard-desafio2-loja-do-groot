@@ -1,14 +1,13 @@
 import { Link } from 'react-router-dom'
 import { Plant } from '../models/Plant'
+import { deletePlant } from '../services/plantService'
 import '../styles/PlantCard.css'
 
 const PlantCard = ({ name, price, id, discountPercentage, imgUrl }: Plant) => {
   imgUrl = imgUrl || 'https://example.com/images/rubber-plant.jpg'
 
   const handleDelete = async () => {
-    await fetch(`http://localhost:3000/plants/${id}`, {
-      method: 'DELETE',
-    })
+    await deletePlant(id || '')
     window.location.href = '/'
   }
 

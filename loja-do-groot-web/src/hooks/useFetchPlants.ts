@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { LOJA_DO_GROOT_API_URL } from '../main'
+import { Hook } from '../models/Hook'
 import { Plant } from '../models/Plant'
 
-interface UseFetchPlants {
+interface UseFetchPlants extends Hook {
   plants: Plant[]
-  loading: boolean
-  error: string | null
 }
 
 const useFetchPlants = () => {
@@ -16,7 +16,7 @@ const useFetchPlants = () => {
   useEffect(() => {
     const fetchPlants = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/plants/')
+        const response = await axios.get(`${LOJA_DO_GROOT_API_URL}/plants/`)
         setPlants(response.data)
       } catch (err) {
         setError('Failed to fetch plants: ' + err)

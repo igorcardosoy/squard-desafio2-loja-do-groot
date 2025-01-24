@@ -1,24 +1,28 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { OrbitProgress } from 'react-loading-indicators'
+import { useNavigate } from 'react-router-dom'
 import PlantCard from '../components/PlantCard'
-import { Plant } from '../models/Plant'
+import useFetchPlants from '../hooks/useFetchPlants'
 import '../styles/Products.css'
 
 const Products = () => {
-  const [products, setProducts] = useState<Plant[]>([])
+  const navigate = useNavigate()
+  const { plants, loading, error } = useFetchPlants()
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get('http://localhost:3000/plants/')
-      setProducts(response.data)
-    }
-
-    fetchData()
-  })
+  if (loading)
+    return (
+      <div className='loading'>
+        <OrbitProgress color='#000' size='medium' text='' textColor='' />
+      </div>
+    )
+  if (error) {
+    console.error(error)
+    navigate('/404')
+    return
+  }
 
   return (
     <div className='products'>
-      {products.map(product => {
+      {plants.map(product => {
         return <PlantCard key={product.id} {...product} />
       })}
     </div>
