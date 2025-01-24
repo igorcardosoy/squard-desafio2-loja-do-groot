@@ -49,10 +49,11 @@ Para rodar este projeto localmente, siga os passos abaixo:
    npm install
    ```
 
-4. Crie um arquivo `.env.local` na raiz do projeto e adicione sua chave de API do Clerk:
+4. Crie um arquivo `.env.local` na raiz do projeto e adicione sua chave de API do Clerk e sua chave de API da loja:
 
    ```env
    VITE_CLERK_PUBLISHABLE_KEY=pk_test_sua_chave_aqui
+   VITE_LOJA_DO_GROOT_API_URL=loja-do-groot-api-url
    ```
 
 5. Inicie o servidor de desenvolvimento:
