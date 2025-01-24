@@ -70,10 +70,11 @@ To run the project's frontend locally, follow these steps:
    npm install
    ```
 
-3. Create a `.env.local` file in the project root and add your Clerk API key:
+3. Create a `.env.local` file in the project root and add your Clerk API key and Store API key:
 
    ```env
    VITE_CLERK_PUBLISHABLE_KEY=pk_test_your_key_here
+   VITE_LOJA_DO_GROOT_API_URL=loja-do-groot-api-url
    ```
 
 4. Start the development server:
