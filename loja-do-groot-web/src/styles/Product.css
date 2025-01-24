@@ -11,6 +11,14 @@
   .subtitle {
     color: #afb2aa;
   }
+
+  .text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    line-height: 25px;
+    font-weight: 400;
+    color: #000;
+  }
 }
 
 .product-info {
@@ -45,14 +53,6 @@
   flex-direction: column;
   gap: 10px;
   margin-top: 10px;
-}
-
-.text {
-  font-family: 'Raleway', sans-serif;
-  font-size: 16px;
-  line-height: 25px;
-  font-weight: 400;
-  color: #000;
 }
 
 .lato {

@@ -4,7 +4,7 @@
   background-color: #354733;
   color: #fff;
   overflow: hidden;
-  background-image: url('../assets/footer_background.png');
+  background-image: url('../assets/images/footer_background.png');
   background-blend-mode: multiply;
   background-size: cover;
   background-position: center;
@@ -17,7 +17,7 @@
   position: absolute;
 }
 
-.footer #footer-backgound img{
+.footer #footer-backgound img {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -64,7 +64,7 @@
   justify-content: space-between;
   width: 100%;
   padding: 20px;
-  border-top: 1px solid #DDDEA0;
+  border-top: 1px solid #dddea0;
 }
 
 @media (max-width: 768px) {
