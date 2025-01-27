@@ -97,10 +97,16 @@ To run the project's frontend locally, follow these steps:
    npm install
    ```
 
-3. Create a `.env` file in the project root and add your database connection information and server port:
+3. Create database in MySQL:
+
+   ```sql
+   CREATE DATABASE IF NOT EXISTS plant_store;
+   ```
+
+4. Create a `.env` file in the project root and add your database connection information and server port:
 
    ```env
-   DB_NAME=db_name
+   DB_NAME=plant_store
    DB_USER=db_user
    DB_PASSWORD=db_password
    DB_HOST=db_host
@@ -108,7 +114,7 @@ To run the project's frontend locally, follow these steps:
    PORT=port of the server
    ```
 
-4. Start the server:
+5. Start the server:
 
    ```sh
    npm start
