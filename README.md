@@ -25,7 +25,7 @@ Groot's Store is a fictional e-commerce offering a wide variety of plants. The g
 - [Node.js](https://nodejs.org/)
 - [Express.js](https://expressjs.com/)
 - [Sequelize](https://sequelize.org/)
-- [SQLite](https://www.sqlite.org/)
+- [MySQL](https://www.mysql.com/)
 - [Yup](https://www.npmjs.com/package/yup)
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
