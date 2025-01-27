@@ -1,4 +1,7 @@
-src/node_modules/
-src/dist/
-src/.env/
-README-pt.md
+/node_modules
+
+# Environment files
+.env
+.env.local
+.env.*
+
