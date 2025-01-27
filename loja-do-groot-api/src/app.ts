@@ -4,7 +4,7 @@ import express from 'express'
 import plantTypesRoutes from './routes/plant-types.routes'
 import plantRoutes from './routes/plant.routes'
 
-import sequelize from './config/dbConfig'
+import { startDatabase } from './config/dbConfig'
 
 dotenv.config()
 
@@ -19,11 +19,7 @@ app.use('/plant-types', plantTypesRoutes)
 
 const startServer = async () => {
   try {
-    await sequelize.authenticate()
-    console.log('Conexão com o banco de dados estabelecida com sucesso.')
-
-    await sequelize.sync()
-    console.log('Modelos sincronizados com o banco de dados.')
+    await startDatabase()
 
     app.listen(PORT, () => {
       console.log(`Servidor rodando na porta ${PORT}`)
