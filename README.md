@@ -1,4 +1,3 @@
-
 # Groot's Store
 
 Welcome to Groot's Store! This is an e-commerce project for selling plants, developed with React, TypeScript, and Vite.
@@ -26,7 +25,7 @@ Groot's Store is a fictional e-commerce offering a wide variety of plants. The g
 - [Node.js](https://nodejs.org/)
 - [Express.js](https://expressjs.com/)
 - [Sequelize](https://sequelize.org/)
-- [SQLite](https://www.sqlite.org/)
+- [MySQL](https://www.mysql.com/)
 - [Yup](https://www.npmjs.com/package/yup)
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -42,6 +41,7 @@ Groot's Store is a fictional e-commerce offering a wide variety of plants. The g
 ## Requirements
 
 You must have the following installed on your machine:
+
 - An IDE (preferably VS Code)
 - Node.js (recommended version 22.9.0 or newer)
 - Git (for cloning the project)
@@ -50,9 +50,9 @@ You must have the following installed on your machine:
 
 Clone the GitHub repository:
 
-   ```sh
-   git clone https://github.com/<your-user-name>/squard-desafio2-loja-do-groot.git
-   ```
+```sh
+git clone https://github.com/<your-user-name>/squard-desafio2-loja-do-groot.git
+```
 
 ## Running the Frontend Application
 
@@ -88,7 +88,7 @@ To run the project's frontend locally, follow these steps:
 1. Navigate to the project directory:
 
    ```sh
-   cd loja-do-groot-api/src
+   cd loja-do-groot-api
    ```
 
 2. Install dependencies:
@@ -97,7 +97,24 @@ To run the project's frontend locally, follow these steps:
    npm install
    ```
 
-3. Start the server:
+3. Create database in MySQL:
+
+   ```sql
+   CREATE DATABASE IF NOT EXISTS plant_store;
+   ```
+
+4. Create a `.env` file in the project root and add your database connection information and server port:
+
+   ```env
+   DB_NAME=plant_store
+   DB_USER=db_user
+   DB_PASSWORD=db_password
+   DB_HOST=db_host
+   DB_PORT=db_port
+   PORT=port of the server
+   ```
+
+5. Start the server:
 
    ```sh
    npm start

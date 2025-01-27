@@ -1,5 +1,5 @@
-import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/dbConfig';
+import { DataTypes, Model } from 'sequelize'
+import sequelize from '../config/dbConfig'
 
 class PlantTypePlant extends Model {}
 
@@ -30,6 +30,6 @@ PlantTypePlant.init(
     tableName: 'plant_type_plants',
     timestamps: false,
   }
-);
+)
 
-export default PlantTypePlant;
+export default PlantTypePlant
