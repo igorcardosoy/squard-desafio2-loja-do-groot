@@ -54,35 +54,6 @@ Clone the GitHub repository:
 git clone https://github.com/<your-user-name>/squard-desafio2-loja-do-groot.git
 ```
 
-## Running the Frontend Application
-
-To run the project's frontend locally, follow these steps:
-
-1. Navigate to the project directory:
-
-   ```sh
-   cd loja-do-groot-web
-   ```
-
-2. Install all dependencies:
-
-   ```sh
-   npm install
-   ```
-
-3. Create a `.env.local` file in the project root and add your Clerk API key and Store url API:
-
-   ```env
-   VITE_CLERK_PUBLISHABLE_KEY=pk_test_your_key_here
-   VITE_LOJA_DO_GROOT_API_URL=loja-do-groot-api-url
-   ```
-
-4. Start the development server:
-
-   ```sh
-   npm run dev
-   ```
-
 ## Running the Backend Application
 
 1. Navigate to the project directory:
@@ -118,6 +89,35 @@ To run the project's frontend locally, follow these steps:
 
    ```sh
    npm start
+   ```
+
+## Running the Frontend Application
+
+To run the project's frontend locally, follow these steps:
+
+1. Navigate to the project directory:
+
+   ```sh
+   cd loja-do-groot-web
+   ```
+
+2. Install all dependencies:
+
+   ```sh
+   npm install
+   ```
+
+3. Create a `.env.local` file in the project root and add your Clerk API key and Store url API:
+
+   ```env
+   VITE_CLERK_PUBLISHABLE_KEY=pk_test_your_key_here
+   VITE_LOJA_DO_GROOT_API_URL=loja-do-groot-api-url
+   ```
+
+4. Start the development server:
+
+   ```sh
+   npm run dev
    ```
 
 ## Usage
