@@ -68,13 +68,7 @@ git clone https://github.com/<your-user-name>/squard-desafio2-loja-do-groot.git
    npm install
    ```
 
-3. Create database in MySQL:
-
-   ```sql
-   CREATE DATABASE IF NOT EXISTS plant_store;
-   ```
-
-4. Create a `.env` file in the project root and add your database connection information and server port:
+3. Create a `.env` file in the project root and add your database connection information and server port:
 
    ```env
    DB_NAME=plant_store
@@ -85,7 +79,7 @@ git clone https://github.com/<your-user-name>/squard-desafio2-loja-do-groot.git
    PORT=port of the server
    ```
 
-5. Start the server:
+4. Start the server:
 
    ```sh
    npm start
